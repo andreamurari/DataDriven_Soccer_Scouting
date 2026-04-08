@@ -9,3 +9,6 @@ sites/site*/public/theme/
 textpattern/
 HISTORY.txt
 Outline_Progetto.gdoc
+
+# Local Python virtual environment
+.venv/
