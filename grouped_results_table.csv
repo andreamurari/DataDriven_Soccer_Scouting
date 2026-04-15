@@ -1,281 +1,281 @@
 target_player,target_season,model_used,rank,player,age,team,pos,league,season,Match %
-Alessandro Bastoni,2024 - 2025,Ensemble,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,90.6%
-Alessandro Bastoni,2024 - 2025,Ensemble,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,83.9%
-Alessandro Bastoni,2024 - 2025,Ensemble,3,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,82.8%
-Alessandro Bastoni,2024 - 2025,Ensemble,4,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,82.6%
-Alessandro Bastoni,2024 - 2025,Ensemble,5,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,82.3%
+Alessandro Bastoni,2024 - 2025,Ensemble,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,88.3%
+Alessandro Bastoni,2024 - 2025,Ensemble,2,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,83.6%
+Alessandro Bastoni,2024 - 2025,Ensemble,3,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,83.2%
+Alessandro Bastoni,2024 - 2025,Ensemble,4,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,80.6%
+Alessandro Bastoni,2024 - 2025,Ensemble,5,Matteo Ruggeri,21,Atalanta,DF,ITA-Serie A,2023 - 2024,79.8%
 Alessandro Bastoni,2024 - 2025,Mix ReLU,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,99.0%
-Alessandro Bastoni,2024 - 2025,Mix ReLU,2,Matteo Ruggeri,21,Atalanta,DF,ITA-Serie A,2023 - 2024,97.9%
-Alessandro Bastoni,2024 - 2025,Mix ReLU,3,Gabriele Zappa,23,Cagliari,DF,ITA-Serie A,2023 - 2024,97.5%
-Alessandro Bastoni,2024 - 2025,Mix ReLU,4,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,97.4%
-Alessandro Bastoni,2024 - 2025,Mix ReLU,5,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,97.4%
-Alessandro Bastoni,2024 - 2025,Mix Tanh,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,88.7%
-Alessandro Bastoni,2024 - 2025,Mix Tanh,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,88.4%
-Alessandro Bastoni,2024 - 2025,Mix Tanh,3,Matteo Ruggeri,22,Atalanta,DF,ITA-Serie A,2024 - 2025,84.9%
-Alessandro Bastoni,2024 - 2025,Mix Tanh,4,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,83.2%
-Alessandro Bastoni,2024 - 2025,Mix Tanh,5,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,82.8%
-Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,93.3%
-Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,2,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,83.2%
-Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,3,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,82.0%
-Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,4,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,79.8%
-Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,5,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,79.8%
-Alessandro Bastoni,2024 - 2025,ReLu + Dropout,1,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,97.7%
-Alessandro Bastoni,2024 - 2025,ReLu + Dropout,2,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,97.5%
-Alessandro Bastoni,2024 - 2025,ReLu + Dropout,3,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,97.4%
-Alessandro Bastoni,2024 - 2025,ReLu + Dropout,4,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,97.2%
-Alessandro Bastoni,2024 - 2025,ReLu + Dropout,5,Matteo Ruggeri,22,Atalanta,DF,ITA-Serie A,2024 - 2025,97.2%
-Alessandro Bastoni,2024 - 2025,Relu,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,98.6%
-Alessandro Bastoni,2024 - 2025,Relu,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,97.9%
-Alessandro Bastoni,2024 - 2025,Relu,3,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,97.7%
-Alessandro Bastoni,2024 - 2025,Relu,4,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,97.6%
-Alessandro Bastoni,2024 - 2025,Relu,5,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,97.5%
-Alessandro Bastoni,2024 - 2025,Tanh,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,87.5%
-Alessandro Bastoni,2024 - 2025,Tanh,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,84.2%
-Alessandro Bastoni,2024 - 2025,Tanh,3,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,84.0%
-Alessandro Bastoni,2024 - 2025,Tanh,4,Jean-Clair Todibo,23,Nice,DF,FRA-Ligue 1,2023 - 2024,81.9%
-Alessandro Bastoni,2024 - 2025,Tanh,5,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,80.9%
-Alessandro Bastoni,2024 - 2025,Tanh + Dropout,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,91.0%
-Alessandro Bastoni,2024 - 2025,Tanh + Dropout,2,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,90.0%
-Alessandro Bastoni,2024 - 2025,Tanh + Dropout,3,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,87.9%
-Alessandro Bastoni,2024 - 2025,Tanh + Dropout,4,Raoul Bellanova,23,Torino,DF,ITA-Serie A,2023 - 2024,86.2%
-Alessandro Bastoni,2024 - 2025,Tanh + Dropout,5,Miguel Gutiérrez,22,Girona,DF,ESP-La Liga,2023 - 2024,86.2%
-Andrea Pinamonti,2024 - 2025,Ensemble,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,93.6%
-Andrea Pinamonti,2024 - 2025,Ensemble,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,92.9%
-Andrea Pinamonti,2024 - 2025,Ensemble,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,92.5%
-Andrea Pinamonti,2024 - 2025,Ensemble,4,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,89.4%
-Andrea Pinamonti,2024 - 2025,Ensemble,5,Matthis Abline,21,Nantes,FW,FRA-Ligue 1,2024 - 2025,88.4%
-Andrea Pinamonti,2024 - 2025,Mix ReLU,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,98.6%
-Andrea Pinamonti,2024 - 2025,Mix ReLU,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,98.6%
-Andrea Pinamonti,2024 - 2025,Mix ReLU,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,98.3%
-Andrea Pinamonti,2024 - 2025,Mix ReLU,4,Santiago Castro,19,Bologna,FW,ITA-Serie A,2024 - 2025,98.2%
-Andrea Pinamonti,2024 - 2025,Mix ReLU,5,Sergio Camello,21,Rayo Vallecano,FW,ESP-La Liga,2022 - 2023,97.6%
-Andrea Pinamonti,2024 - 2025,Mix Tanh,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,88.6%
-Andrea Pinamonti,2024 - 2025,Mix Tanh,2,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,88.4%
-Andrea Pinamonti,2024 - 2025,Mix Tanh,3,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,86.7%
-Andrea Pinamonti,2024 - 2025,Mix Tanh,4,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,80.9%
-Andrea Pinamonti,2024 - 2025,Mix Tanh,5,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,80.3%
-Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,94.8%
-Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,2,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,91.6%
-Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,3,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,90.9%
-Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,4,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,90.5%
-Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,5,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,88.2%
-Andrea Pinamonti,2024 - 2025,ReLu + Dropout,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,98.8%
-Andrea Pinamonti,2024 - 2025,ReLu + Dropout,2,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,97.9%
-Andrea Pinamonti,2024 - 2025,ReLu + Dropout,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,96.6%
-Andrea Pinamonti,2024 - 2025,ReLu + Dropout,4,Matthis Abline,21,Nantes,FW,FRA-Ligue 1,2024 - 2025,95.6%
-Andrea Pinamonti,2024 - 2025,ReLu + Dropout,5,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,95.6%
-Andrea Pinamonti,2024 - 2025,Relu,1,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,98.8%
-Andrea Pinamonti,2024 - 2025,Relu,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,98.1%
-Andrea Pinamonti,2024 - 2025,Relu,3,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,97.7%
-Andrea Pinamonti,2024 - 2025,Relu,4,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,97.2%
-Andrea Pinamonti,2024 - 2025,Relu,5,Elye Wahi,19,Montpellier,FW,FRA-Ligue 1,2022 - 2023,97.1%
-Andrea Pinamonti,2024 - 2025,Tanh,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,93.1%
-Andrea Pinamonti,2024 - 2025,Tanh,2,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,91.7%
-Andrea Pinamonti,2024 - 2025,Tanh,3,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,89.3%
-Andrea Pinamonti,2024 - 2025,Tanh,4,Matthis Abline,21,Nantes,FW,FRA-Ligue 1,2024 - 2025,86.0%
-Andrea Pinamonti,2024 - 2025,Tanh,5,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,85.7%
-Andrea Pinamonti,2024 - 2025,Tanh + Dropout,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,96.9%
-Andrea Pinamonti,2024 - 2025,Tanh + Dropout,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,94.6%
-Andrea Pinamonti,2024 - 2025,Tanh + Dropout,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,94.2%
-Andrea Pinamonti,2024 - 2025,Tanh + Dropout,4,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,94.0%
-Andrea Pinamonti,2024 - 2025,Tanh + Dropout,5,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,92.6%
-Erling Haaland,2024 - 2025,Ensemble,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,89.9%
-Erling Haaland,2024 - 2025,Ensemble,2,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,86.7%
-Erling Haaland,2024 - 2025,Ensemble,3,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,84.0%
-Erling Haaland,2024 - 2025,Ensemble,4,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,83.7%
-Erling Haaland,2024 - 2025,Ensemble,5,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,83.0%
-Erling Haaland,2024 - 2025,Mix ReLU,1,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,98.0%
-Erling Haaland,2024 - 2025,Mix ReLU,2,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,97.8%
-Erling Haaland,2024 - 2025,Mix ReLU,3,Jonathan David,23,Lille,FW,FRA-Ligue 1,2023 - 2024,97.7%
-Erling Haaland,2024 - 2025,Mix ReLU,4,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,97.6%
-Erling Haaland,2024 - 2025,Mix ReLU,5,Jørgen Strand Larsen,23,Celta Vigo,FW,ESP-La Liga,2023 - 2024,96.9%
-Erling Haaland,2024 - 2025,Mix Tanh,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,91.6%
-Erling Haaland,2024 - 2025,Mix Tanh,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,86.0%
-Erling Haaland,2024 - 2025,Mix Tanh,3,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,81.2%
-Erling Haaland,2024 - 2025,Mix Tanh,4,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,79.0%
-Erling Haaland,2024 - 2025,Mix Tanh,5,Thierno Barry,21,Villarreal,FW,ESP-La Liga,2024 - 2025,78.2%
-Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,1,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,95.6%
-Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,2,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,92.8%
-Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,3,Jonathan David,23,Lille,FW,FRA-Ligue 1,2023 - 2024,91.6%
-Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,4,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,90.7%
-Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,5,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,85.8%
-Erling Haaland,2024 - 2025,ReLu + Dropout,1,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,99.5%
-Erling Haaland,2024 - 2025,ReLu + Dropout,2,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,99.1%
-Erling Haaland,2024 - 2025,ReLu + Dropout,3,Dušan Vlahović,22,Juventus,FW,ITA-Serie A,2022 - 2023,97.7%
-Erling Haaland,2024 - 2025,ReLu + Dropout,4,Emanuel Emegha,20,Strasbourg,FW,FRA-Ligue 1,2023 - 2024,97.3%
-Erling Haaland,2024 - 2025,ReLu + Dropout,5,Thierno Barry,21,Villarreal,FW,ESP-La Liga,2024 - 2025,97.1%
-Erling Haaland,2024 - 2025,Relu,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,99.6%
-Erling Haaland,2024 - 2025,Relu,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,99.4%
-Erling Haaland,2024 - 2025,Relu,3,Jonathan David,23,Lille,FW,FRA-Ligue 1,2023 - 2024,99.3%
-Erling Haaland,2024 - 2025,Relu,4,Alexander Isak,23,Newcastle Utd,FW,ENG-Premier League,2023 - 2024,99.1%
+Alessandro Bastoni,2024 - 2025,Mix ReLU,2,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,98.4%
+Alessandro Bastoni,2024 - 2025,Mix ReLU,3,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,98.2%
+Alessandro Bastoni,2024 - 2025,Mix ReLU,4,Konstantinos Koulierakis,20,Wolfsburg,DF,GER-Bundesliga,2024 - 2025,98.2%
+Alessandro Bastoni,2024 - 2025,Mix ReLU,5,Guela Doué,21,Strasbourg,DF,FRA-Ligue 1,2024 - 2025,98.1%
+Alessandro Bastoni,2024 - 2025,Mix Tanh,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,73.6%
+Alessandro Bastoni,2024 - 2025,Mix Tanh,2,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,73.4%
+Alessandro Bastoni,2024 - 2025,Mix Tanh,3,Jean-Clair Todibo,23,Nice,DF,FRA-Ligue 1,2023 - 2024,69.8%
+Alessandro Bastoni,2024 - 2025,Mix Tanh,4,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,68.7%
+Alessandro Bastoni,2024 - 2025,Mix Tanh,5,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,68.6%
+Alessandro Bastoni,2024 - 2025,ReLU + Dropout,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,98.8%
+Alessandro Bastoni,2024 - 2025,ReLU + Dropout,2,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,98.7%
+Alessandro Bastoni,2024 - 2025,ReLU + Dropout,3,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,98.7%
+Alessandro Bastoni,2024 - 2025,ReLU + Dropout,4,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,98.6%
+Alessandro Bastoni,2024 - 2025,ReLU + Dropout,5,Samuele Ricci,21,Torino,MF,ITA-Serie A,2023 - 2024,98.6%
+Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,92.1%
+Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,2,Piero Hincapié,22,Leverkusen,DF,GER-Bundesliga,2024 - 2025,87.0%
+Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,3,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,82.8%
+Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,4,Arnau Martinez,21,Girona,"DF,MF",ESP-La Liga,2024 - 2025,82.7%
+Alessandro Bastoni,2024 - 2025,ReLU + Tanh bottleneck,5,Lucas Da Cunha,23,Como,MF,ITA-Serie A,2024 - 2025,82.7%
+Alessandro Bastoni,2024 - 2025,Relu,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,99.0%
+Alessandro Bastoni,2024 - 2025,Relu,2,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,98.4%
+Alessandro Bastoni,2024 - 2025,Relu,3,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,98.3%
+Alessandro Bastoni,2024 - 2025,Relu,4,Angelo Stiller,23,Stuttgart,MF,GER-Bundesliga,2024 - 2025,98.3%
+Alessandro Bastoni,2024 - 2025,Relu,5,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,98.2%
+Alessandro Bastoni,2024 - 2025,Tanh,1,Hiroki Ito,23,Stuttgart,DF,GER-Bundesliga,2022 - 2023,84.5%
+Alessandro Bastoni,2024 - 2025,Tanh,2,Arthur Theate,23,Rennes,DF,FRA-Ligue 1,2023 - 2024,82.6%
+Alessandro Bastoni,2024 - 2025,Tanh,3,Facundo Medina,23,Lens,DF,FRA-Ligue 1,2022 - 2023,82.6%
+Alessandro Bastoni,2024 - 2025,Tanh,4,Matteo Ruggeri,21,Atalanta,DF,ITA-Serie A,2023 - 2024,82.6%
+Alessandro Bastoni,2024 - 2025,Tanh,5,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,82.4%
+Alessandro Bastoni,2024 - 2025,Tanh + Dropout,1,Jules Koundé,23,Barcelona,DF,ESP-La Liga,2022 - 2023,90.4%
+Alessandro Bastoni,2024 - 2025,Tanh + Dropout,2,Riccardo Calafiori,21,Bologna,DF,ITA-Serie A,2023 - 2024,87.5%
+Alessandro Bastoni,2024 - 2025,Tanh + Dropout,3,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,87.3%
+Alessandro Bastoni,2024 - 2025,Tanh + Dropout,4,Miguel Gutiérrez,23,Girona,"DF,MF",ESP-La Liga,2024 - 2025,87.2%
+Alessandro Bastoni,2024 - 2025,Tanh + Dropout,5,Matteo Ruggeri,21,Atalanta,DF,ITA-Serie A,2023 - 2024,87.0%
+Andrea Pinamonti,2024 - 2025,Ensemble,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,95.2%
+Andrea Pinamonti,2024 - 2025,Ensemble,2,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,93.9%
+Andrea Pinamonti,2024 - 2025,Ensemble,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,93.1%
+Andrea Pinamonti,2024 - 2025,Ensemble,4,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,90.9%
+Andrea Pinamonti,2024 - 2025,Ensemble,5,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,89.9%
+Andrea Pinamonti,2024 - 2025,Mix ReLU,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,97.0%
+Andrea Pinamonti,2024 - 2025,Mix ReLU,2,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,96.6%
+Andrea Pinamonti,2024 - 2025,Mix ReLU,3,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,96.1%
+Andrea Pinamonti,2024 - 2025,Mix ReLU,4,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,95.9%
+Andrea Pinamonti,2024 - 2025,Mix ReLU,5,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,95.6%
+Andrea Pinamonti,2024 - 2025,Mix Tanh,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,97.1%
+Andrea Pinamonti,2024 - 2025,Mix Tanh,2,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,94.5%
+Andrea Pinamonti,2024 - 2025,Mix Tanh,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,92.8%
+Andrea Pinamonti,2024 - 2025,Mix Tanh,4,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,90.0%
+Andrea Pinamonti,2024 - 2025,Mix Tanh,5,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,87.7%
+Andrea Pinamonti,2024 - 2025,ReLU + Dropout,1,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,99.6%
+Andrea Pinamonti,2024 - 2025,ReLU + Dropout,2,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,99.4%
+Andrea Pinamonti,2024 - 2025,ReLU + Dropout,3,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,99.1%
+Andrea Pinamonti,2024 - 2025,ReLU + Dropout,4,Liam Delap,21,Ipswich Town,FW,ENG-Premier League,2024 - 2025,99.1%
+Andrea Pinamonti,2024 - 2025,ReLU + Dropout,5,Amin Sarr,23,Hellas Verona,FW,ITA-Serie A,2024 - 2025,99.1%
+Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,1,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,95.9%
+Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,95.8%
+Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,3,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,90.6%
+Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,4,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,89.4%
+Andrea Pinamonti,2024 - 2025,ReLU + Tanh bottleneck,5,Hugo Duro,23,Valencia,FW,ESP-La Liga,2023 - 2024,88.7%
+Andrea Pinamonti,2024 - 2025,Relu,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,98.5%
+Andrea Pinamonti,2024 - 2025,Relu,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,98.4%
+Andrea Pinamonti,2024 - 2025,Relu,3,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,98.4%
+Andrea Pinamonti,2024 - 2025,Relu,4,Maximilian Beier,20,Hoffenheim,"FW,MF",GER-Bundesliga,2023 - 2024,97.3%
+Andrea Pinamonti,2024 - 2025,Relu,5,Elye Wahi,19,Montpellier,FW,FRA-Ligue 1,2022 - 2023,96.9%
+Andrea Pinamonti,2024 - 2025,Tanh,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,94.9%
+Andrea Pinamonti,2024 - 2025,Tanh,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,94.4%
+Andrea Pinamonti,2024 - 2025,Tanh,3,Santiago Castro,19,Bologna,FW,ITA-Serie A,2024 - 2025,93.3%
+Andrea Pinamonti,2024 - 2025,Tanh,4,Lorenzo Lucca,22,Udinese,FW,ITA-Serie A,2023 - 2024,92.5%
+Andrea Pinamonti,2024 - 2025,Tanh,5,Lorenzo Lucca,23,Udinese,FW,ITA-Serie A,2024 - 2025,91.9%
+Andrea Pinamonti,2024 - 2025,Tanh + Dropout,1,Thijs Dallinga,21,Toulouse,FW,FRA-Ligue 1,2022 - 2023,96.3%
+Andrea Pinamonti,2024 - 2025,Tanh + Dropout,2,Valentín Castellanos,23,Girona,FW,ESP-La Liga,2022 - 2023,95.5%
+Andrea Pinamonti,2024 - 2025,Tanh + Dropout,3,Matthis Abline,21,Nantes,FW,FRA-Ligue 1,2024 - 2025,93.8%
+Andrea Pinamonti,2024 - 2025,Tanh + Dropout,4,Rasmus Højlund,21,Manchester Utd,FW,ENG-Premier League,2024 - 2025,92.5%
+Andrea Pinamonti,2024 - 2025,Tanh + Dropout,5,Brennan Johnson,21,Nott'ham Forest,"FW,MF",ENG-Premier League,2022 - 2023,92.2%
+Erling Haaland,2024 - 2025,Ensemble,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,86.0%
+Erling Haaland,2024 - 2025,Ensemble,2,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,85.3%
+Erling Haaland,2024 - 2025,Ensemble,3,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,84.8%
+Erling Haaland,2024 - 2025,Ensemble,4,Emanuel Emegha,21,Strasbourg,FW,FRA-Ligue 1,2024 - 2025,82.7%
+Erling Haaland,2024 - 2025,Ensemble,5,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,82.7%
+Erling Haaland,2024 - 2025,Mix ReLU,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,98.2%
+Erling Haaland,2024 - 2025,Mix ReLU,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,97.4%
+Erling Haaland,2024 - 2025,Mix ReLU,3,Alexander Isak,23,Newcastle Utd,FW,ENG-Premier League,2023 - 2024,97.2%
+Erling Haaland,2024 - 2025,Mix ReLU,4,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,96.2%
+Erling Haaland,2024 - 2025,Mix ReLU,5,Thierno Barry,21,Villarreal,FW,ESP-La Liga,2024 - 2025,96.2%
+Erling Haaland,2024 - 2025,Mix Tanh,1,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,94.8%
+Erling Haaland,2024 - 2025,Mix Tanh,2,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,90.9%
+Erling Haaland,2024 - 2025,Mix Tanh,3,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,90.5%
+Erling Haaland,2024 - 2025,Mix Tanh,4,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,90.4%
+Erling Haaland,2024 - 2025,Mix Tanh,5,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,88.4%
+Erling Haaland,2024 - 2025,ReLU + Dropout,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,99.5%
+Erling Haaland,2024 - 2025,ReLU + Dropout,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,99.3%
+Erling Haaland,2024 - 2025,ReLU + Dropout,3,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,98.4%
+Erling Haaland,2024 - 2025,ReLU + Dropout,4,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,98.3%
+Erling Haaland,2024 - 2025,ReLU + Dropout,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,98.1%
+Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,93.9%
+Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,93.9%
+Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,3,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,91.4%
+Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,4,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,89.0%
+Erling Haaland,2024 - 2025,ReLU + Tanh bottleneck,5,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,88.6%
+Erling Haaland,2024 - 2025,Relu,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,99.7%
+Erling Haaland,2024 - 2025,Relu,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,99.5%
+Erling Haaland,2024 - 2025,Relu,3,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,99.2%
+Erling Haaland,2024 - 2025,Relu,4,Jonathan David,23,Lille,FW,FRA-Ligue 1,2023 - 2024,99.1%
 Erling Haaland,2024 - 2025,Relu,5,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,99.1%
-Erling Haaland,2024 - 2025,Tanh,1,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,92.5%
-Erling Haaland,2024 - 2025,Tanh,2,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,89.1%
-Erling Haaland,2024 - 2025,Tanh,3,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,84.7%
-Erling Haaland,2024 - 2025,Tanh,4,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,81.4%
-Erling Haaland,2024 - 2025,Tanh,5,Thierno Barry,21,Villarreal,FW,ESP-La Liga,2024 - 2025,80.4%
-Erling Haaland,2024 - 2025,Tanh + Dropout,1,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,88.3%
-Erling Haaland,2024 - 2025,Tanh + Dropout,2,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,84.6%
-Erling Haaland,2024 - 2025,Tanh + Dropout,3,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,84.5%
-Erling Haaland,2024 - 2025,Tanh + Dropout,4,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,83.5%
-Erling Haaland,2024 - 2025,Tanh + Dropout,5,Emanuel Emegha,21,Strasbourg,FW,FRA-Ligue 1,2024 - 2025,75.8%
-Kevin De Bruyne,2024 - 2025,Ensemble,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,82.8%
-Kevin De Bruyne,2024 - 2025,Ensemble,2,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,80.8%
-Kevin De Bruyne,2024 - 2025,Ensemble,3,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,79.4%
-Kevin De Bruyne,2024 - 2025,Ensemble,4,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,76.6%
-Kevin De Bruyne,2024 - 2025,Ensemble,5,Bukayo Saka,22,Arsenal,"FW,MF",ENG-Premier League,2024 - 2025,74.2%
-Kevin De Bruyne,2024 - 2025,Mix ReLU,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,99.1%
-Kevin De Bruyne,2024 - 2025,Mix ReLU,2,Dominik Szoboszlai,23,Liverpool,MF,ENG-Premier League,2024 - 2025,98.6%
-Kevin De Bruyne,2024 - 2025,Mix ReLU,3,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,98.4%
-Kevin De Bruyne,2024 - 2025,Mix ReLU,4,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,98.3%
-Kevin De Bruyne,2024 - 2025,Mix ReLU,5,Dominik Szoboszlai,22,Liverpool,MF,ENG-Premier League,2023 - 2024,97.9%
-Kevin De Bruyne,2024 - 2025,Mix Tanh,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,80.7%
-Kevin De Bruyne,2024 - 2025,Mix Tanh,2,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,77.6%
-Kevin De Bruyne,2024 - 2025,Mix Tanh,3,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,75.5%
-Kevin De Bruyne,2024 - 2025,Mix Tanh,4,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,66.0%
-Kevin De Bruyne,2024 - 2025,Mix Tanh,5,Bukayo Saka,22,Arsenal,"FW,MF",ENG-Premier League,2024 - 2025,66.0%
-Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,83.1%
-Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,2,Musa Barrow,23,Bologna,"FW,MF",ITA-Serie A,2022 - 2023,80.7%
-Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,3,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,78.7%
-Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,4,Pedro Neto,23,Wolves,"FW,MF",ENG-Premier League,2023 - 2024,78.4%
-Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,5,Bukayo Saka,22,Arsenal,"FW,MF",ENG-Premier League,2024 - 2025,75.9%
-Kevin De Bruyne,2024 - 2025,ReLu + Dropout,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,98.4%
-Kevin De Bruyne,2024 - 2025,ReLu + Dropout,2,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,97.4%
-Kevin De Bruyne,2024 - 2025,ReLu + Dropout,3,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,97.2%
-Kevin De Bruyne,2024 - 2025,ReLu + Dropout,4,Harvey Elliott,19,Liverpool,"MF,FW",ENG-Premier League,2022 - 2023,96.9%
-Kevin De Bruyne,2024 - 2025,ReLu + Dropout,5,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,96.9%
-Kevin De Bruyne,2024 - 2025,Relu,1,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,98.3%
-Kevin De Bruyne,2024 - 2025,Relu,2,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,97.8%
-Kevin De Bruyne,2024 - 2025,Relu,3,Sebastian Nanasi,22,Strasbourg,"MF,FW",FRA-Ligue 1,2024 - 2025,97.7%
-Kevin De Bruyne,2024 - 2025,Relu,4,Alex Baena,22,Villarreal,"MF,FW",ESP-La Liga,2023 - 2024,97.4%
-Kevin De Bruyne,2024 - 2025,Relu,5,Charles De Ketelaere,23,Atalanta,"MF,FW",ITA-Serie A,2024 - 2025,97.3%
-Kevin De Bruyne,2024 - 2025,Tanh,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,80.0%
-Kevin De Bruyne,2024 - 2025,Tanh,2,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,79.4%
-Kevin De Bruyne,2024 - 2025,Tanh,3,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,77.6%
-Kevin De Bruyne,2024 - 2025,Tanh,4,Rodrigo Zalazar,22,Schalke 04,"MF,FW",GER-Bundesliga,2022 - 2023,74.6%
-Kevin De Bruyne,2024 - 2025,Tanh,5,Fares Chaïbi,21,Eint Frankfurt,"MF,FW",GER-Bundesliga,2024 - 2025,74.4%
-Kevin De Bruyne,2024 - 2025,Tanh + Dropout,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,89.8%
-Kevin De Bruyne,2024 - 2025,Tanh + Dropout,2,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,86.2%
-Kevin De Bruyne,2024 - 2025,Tanh + Dropout,3,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,85.8%
-Kevin De Bruyne,2024 - 2025,Tanh + Dropout,4,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,85.7%
-Kevin De Bruyne,2024 - 2025,Tanh + Dropout,5,Edon Zhegrova,23,Lille,"FW,MF",FRA-Ligue 1,2022 - 2023,83.6%
-Manuel Locatelli,2024 - 2025,Ensemble,1,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,83.3%
-Manuel Locatelli,2024 - 2025,Ensemble,2,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,83.1%
-Manuel Locatelli,2024 - 2025,Ensemble,3,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,81.2%
-Manuel Locatelli,2024 - 2025,Ensemble,4,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,80.8%
-Manuel Locatelli,2024 - 2025,Ensemble,5,Moisés Caicedo,20,Brighton,MF,ENG-Premier League,2022 - 2023,79.8%
-Manuel Locatelli,2024 - 2025,Mix ReLU,1,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,98.1%
-Manuel Locatelli,2024 - 2025,Mix ReLU,2,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,98.1%
-Manuel Locatelli,2024 - 2025,Mix ReLU,3,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,97.7%
-Manuel Locatelli,2024 - 2025,Mix ReLU,4,Hiroki Ito,23,Stuttgart,DF,GER-Bundesliga,2022 - 2023,97.6%
-Manuel Locatelli,2024 - 2025,Mix ReLU,5,Fran Beltrán,23,Celta Vigo,MF,ESP-La Liga,2022 - 2023,97.5%
-Manuel Locatelli,2024 - 2025,Mix Tanh,1,Enzo Fernández,22,Chelsea,MF,ENG-Premier League,2023 - 2024,83.1%
-Manuel Locatelli,2024 - 2025,Mix Tanh,2,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,79.3%
-Manuel Locatelli,2024 - 2025,Mix Tanh,3,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,76.1%
-Manuel Locatelli,2024 - 2025,Mix Tanh,4,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,69.8%
-Manuel Locatelli,2024 - 2025,Mix Tanh,5,Edmond Tapsoba,23,Leverkusen,DF,GER-Bundesliga,2022 - 2023,69.6%
-Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,1,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,86.7%
-Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,2,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,81.7%
-Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,3,Moisés Caicedo,21,Chelsea,MF,ENG-Premier League,2023 - 2024,80.5%
-Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,4,Edmond Tapsoba,23,Leverkusen,DF,GER-Bundesliga,2022 - 2023,79.9%
-Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,5,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,79.3%
-Manuel Locatelli,2024 - 2025,ReLu + Dropout,1,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,98.1%
-Manuel Locatelli,2024 - 2025,ReLu + Dropout,2,Alessandro Bianco,21,Monza,MF,ITA-Serie A,2024 - 2025,97.4%
-Manuel Locatelli,2024 - 2025,ReLu + Dropout,3,Edmond Tapsoba,23,Leverkusen,DF,GER-Bundesliga,2022 - 2023,96.7%
-Manuel Locatelli,2024 - 2025,ReLu + Dropout,4,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,96.6%
-Manuel Locatelli,2024 - 2025,ReLu + Dropout,5,Nico Schlotterbeck,23,Dortmund,DF,GER-Bundesliga,2023 - 2024,96.5%
-Manuel Locatelli,2024 - 2025,Relu,1,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,98.7%
-Manuel Locatelli,2024 - 2025,Relu,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,98.6%
-Manuel Locatelli,2024 - 2025,Relu,3,Pedri,21,Barcelona,MF,ESP-La Liga,2024 - 2025,98.6%
-Manuel Locatelli,2024 - 2025,Relu,4,Fran Beltrán,23,Celta Vigo,MF,ESP-La Liga,2022 - 2023,98.5%
-Manuel Locatelli,2024 - 2025,Relu,5,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,98.4%
-Manuel Locatelli,2024 - 2025,Tanh,1,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,87.0%
-Manuel Locatelli,2024 - 2025,Tanh,2,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,85.3%
-Manuel Locatelli,2024 - 2025,Tanh,3,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,81.1%
-Manuel Locatelli,2024 - 2025,Tanh,4,Enzo Fernández,22,Chelsea,MF,ENG-Premier League,2023 - 2024,80.3%
-Manuel Locatelli,2024 - 2025,Tanh,5,Nehuén Pérez,22,Udinese,DF,ITA-Serie A,2022 - 2023,79.2%
-Manuel Locatelli,2024 - 2025,Tanh + Dropout,1,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,91.2%
-Manuel Locatelli,2024 - 2025,Tanh + Dropout,2,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,90.7%
-Manuel Locatelli,2024 - 2025,Tanh + Dropout,3,Moisés Caicedo,20,Brighton,MF,ENG-Premier League,2022 - 2023,87.6%
-Manuel Locatelli,2024 - 2025,Tanh + Dropout,4,Moisés Caicedo,21,Chelsea,MF,ENG-Premier League,2023 - 2024,82.5%
-Manuel Locatelli,2024 - 2025,Tanh + Dropout,5,Jean-Clair Todibo,22,Nice,DF,FRA-Ligue 1,2022 - 2023,82.1%
-Riccardo Orsolini,2024 - 2025,Ensemble,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,91.6%
-Riccardo Orsolini,2024 - 2025,Ensemble,2,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,85.9%
-Riccardo Orsolini,2024 - 2025,Ensemble,3,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,85.6%
-Riccardo Orsolini,2024 - 2025,Ensemble,4,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,82.2%
-Riccardo Orsolini,2024 - 2025,Ensemble,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,81.8%
-Riccardo Orsolini,2024 - 2025,Mix ReLU,1,Adam Hložek,22,Hoffenheim,"FW,MF",GER-Bundesliga,2024 - 2025,99.5%
-Riccardo Orsolini,2024 - 2025,Mix ReLU,2,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,98.9%
-Riccardo Orsolini,2024 - 2025,Mix ReLU,3,Michael Olise,21,Crystal Palace,"FW,MF",ENG-Premier League,2023 - 2024,98.7%
-Riccardo Orsolini,2024 - 2025,Mix ReLU,4,Karim Adeyemi,20,Dortmund,"FW,MF",GER-Bundesliga,2022 - 2023,98.6%
-Riccardo Orsolini,2024 - 2025,Mix ReLU,5,Bryan Mbeumo,23,Brentford,FW,ENG-Premier League,2023 - 2024,98.6%
-Riccardo Orsolini,2024 - 2025,Mix Tanh,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,88.3%
-Riccardo Orsolini,2024 - 2025,Mix Tanh,2,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,83.7%
-Riccardo Orsolini,2024 - 2025,Mix Tanh,3,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,81.6%
-Riccardo Orsolini,2024 - 2025,Mix Tanh,4,Michael Olise,21,Crystal Palace,"FW,MF",ENG-Premier League,2023 - 2024,81.1%
-Riccardo Orsolini,2024 - 2025,Mix Tanh,5,Bryan Zaragoza,21,Granada,"MF,FW",ESP-La Liga,2023 - 2024,80.9%
-Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,95.5%
-Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,88.3%
-Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,3,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,86.0%
-Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,4,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,83.7%
-Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,5,Benjamin Šeško,21,RB Leipzig,"FW,MF",GER-Bundesliga,2024 - 2025,83.7%
-Riccardo Orsolini,2024 - 2025,ReLu + Dropout,1,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,98.5%
-Riccardo Orsolini,2024 - 2025,ReLu + Dropout,2,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,98.4%
-Riccardo Orsolini,2024 - 2025,ReLu + Dropout,3,Adam Hložek,22,Hoffenheim,"FW,MF",GER-Bundesliga,2024 - 2025,97.9%
-Riccardo Orsolini,2024 - 2025,ReLu + Dropout,4,Keito Nakamura,23,Reims,"FW,MF",FRA-Ligue 1,2023 - 2024,97.9%
-Riccardo Orsolini,2024 - 2025,ReLu + Dropout,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,97.8%
-Riccardo Orsolini,2024 - 2025,Relu,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,99.6%
-Riccardo Orsolini,2024 - 2025,Relu,2,Benjamin Šeško,21,RB Leipzig,"FW,MF",GER-Bundesliga,2024 - 2025,99.5%
-Riccardo Orsolini,2024 - 2025,Relu,3,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,99.3%
-Riccardo Orsolini,2024 - 2025,Relu,4,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,99.1%
-Riccardo Orsolini,2024 - 2025,Relu,5,Santiago Castro,19,Bologna,FW,ITA-Serie A,2024 - 2025,99.1%
-Riccardo Orsolini,2024 - 2025,Tanh,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,91.0%
-Riccardo Orsolini,2024 - 2025,Tanh,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,87.1%
-Riccardo Orsolini,2024 - 2025,Tanh,3,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,81.8%
-Riccardo Orsolini,2024 - 2025,Tanh,4,Terem Moffi,23,Lorient,FW,FRA-Ligue 1,2022 - 2023,81.8%
-Riccardo Orsolini,2024 - 2025,Tanh,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,80.6%
-Riccardo Orsolini,2024 - 2025,Tanh + Dropout,1,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,89.8%
-Riccardo Orsolini,2024 - 2025,Tanh + Dropout,2,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,88.3%
-Riccardo Orsolini,2024 - 2025,Tanh + Dropout,3,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,87.9%
-Riccardo Orsolini,2024 - 2025,Tanh + Dropout,4,Bryan Zaragoza,21,Granada,"MF,FW",ESP-La Liga,2023 - 2024,87.5%
-Riccardo Orsolini,2024 - 2025,Tanh + Dropout,5,Justin Njinmah,22,Werder Bremen,FW,GER-Bundesliga,2023 - 2024,86.7%
-Xavi Simons,2024 - 2025,Ensemble,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,89.7%
-Xavi Simons,2024 - 2025,Ensemble,2,Takefusa Kubo,22,Real Sociedad,"FW,MF",ESP-La Liga,2023 - 2024,86.4%
-Xavi Simons,2024 - 2025,Ensemble,3,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,86.1%
-Xavi Simons,2024 - 2025,Ensemble,4,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,84.0%
-Xavi Simons,2024 - 2025,Ensemble,5,Kenan Yıldız,19,Juventus,"FW,MF",ITA-Serie A,2024 - 2025,83.9%
+Erling Haaland,2024 - 2025,Tanh,1,Thijs Dallinga,22,Toulouse,FW,FRA-Ligue 1,2023 - 2024,93.4%
+Erling Haaland,2024 - 2025,Tanh,2,Loïs Openda,22,Lens,FW,FRA-Ligue 1,2022 - 2023,91.3%
+Erling Haaland,2024 - 2025,Tanh,3,Loïs Openda,23,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,90.9%
+Erling Haaland,2024 - 2025,Tanh,4,Thierno Barry,21,Villarreal,FW,ESP-La Liga,2024 - 2025,90.2%
+Erling Haaland,2024 - 2025,Tanh,5,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,89.6%
+Erling Haaland,2024 - 2025,Tanh + Dropout,1,Victor Osimhen,23,Napoli,FW,ITA-Serie A,2022 - 2023,74.9%
+Erling Haaland,2024 - 2025,Tanh + Dropout,2,Dušan Vlahović,23,Juventus,FW,ITA-Serie A,2023 - 2024,74.7%
+Erling Haaland,2024 - 2025,Tanh + Dropout,3,Emanuel Emegha,21,Strasbourg,FW,FRA-Ligue 1,2024 - 2025,74.6%
+Erling Haaland,2024 - 2025,Tanh + Dropout,4,Alexander Isak,23,Newcastle Utd,FW,ENG-Premier League,2023 - 2024,71.0%
+Erling Haaland,2024 - 2025,Tanh + Dropout,5,Folarin Balogun,21,Reims,FW,FRA-Ligue 1,2022 - 2023,69.3%
+Kevin De Bruyne,2024 - 2025,Ensemble,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,85.9%
+Kevin De Bruyne,2024 - 2025,Ensemble,2,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,85.4%
+Kevin De Bruyne,2024 - 2025,Ensemble,3,Thiago Almada,23,Lyon,"MF,FW",FRA-Ligue 1,2024 - 2025,81.8%
+Kevin De Bruyne,2024 - 2025,Ensemble,4,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,78.3%
+Kevin De Bruyne,2024 - 2025,Ensemble,5,Edon Zhegrova,23,Lille,"FW,MF",FRA-Ligue 1,2022 - 2023,78.0%
+Kevin De Bruyne,2024 - 2025,Mix ReLU,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,97.7%
+Kevin De Bruyne,2024 - 2025,Mix ReLU,2,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,97.5%
+Kevin De Bruyne,2024 - 2025,Mix ReLU,3,Khvicha Kvaratskhelia,23,Paris S-G,FW,FRA-Ligue 1,2024 - 2025,97.3%
+Kevin De Bruyne,2024 - 2025,Mix ReLU,4,Bukayo Saka,22,Arsenal,"FW,MF",ENG-Premier League,2024 - 2025,97.1%
+Kevin De Bruyne,2024 - 2025,Mix ReLU,5,Edon Zhegrova,23,Lille,"FW,MF",FRA-Ligue 1,2022 - 2023,97.0%
+Kevin De Bruyne,2024 - 2025,Mix Tanh,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,84.8%
+Kevin De Bruyne,2024 - 2025,Mix Tanh,2,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,82.6%
+Kevin De Bruyne,2024 - 2025,Mix Tanh,3,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,82.5%
+Kevin De Bruyne,2024 - 2025,Mix Tanh,4,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,80.0%
+Kevin De Bruyne,2024 - 2025,Mix Tanh,5,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,78.4%
+Kevin De Bruyne,2024 - 2025,ReLU + Dropout,1,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,99.0%
+Kevin De Bruyne,2024 - 2025,ReLU + Dropout,2,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,98.8%
+Kevin De Bruyne,2024 - 2025,ReLU + Dropout,3,Alexis Saelemaekers,23,Milan,"FW,DF",ITA-Serie A,2022 - 2023,98.4%
+Kevin De Bruyne,2024 - 2025,ReLU + Dropout,4,Edon Zhegrova,23,Lille,"FW,MF",FRA-Ligue 1,2022 - 2023,98.3%
+Kevin De Bruyne,2024 - 2025,ReLU + Dropout,5,Romano Schmid,22,Werder Bremen,"MF,FW",GER-Bundesliga,2022 - 2023,97.7%
+Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,1,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,86.0%
+Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,2,Bukayo Saka,22,Arsenal,"FW,MF",ENG-Premier League,2024 - 2025,84.4%
+Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,3,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,83.6%
+Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,4,Thiago Almada,23,Lyon,"MF,FW",FRA-Ligue 1,2024 - 2025,77.9%
+Kevin De Bruyne,2024 - 2025,ReLU + Tanh bottleneck,5,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,76.3%
+Kevin De Bruyne,2024 - 2025,Relu,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,98.8%
+Kevin De Bruyne,2024 - 2025,Relu,2,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,98.7%
+Kevin De Bruyne,2024 - 2025,Relu,3,Sebastian Nanasi,22,Strasbourg,"MF,FW",FRA-Ligue 1,2024 - 2025,98.6%
+Kevin De Bruyne,2024 - 2025,Relu,4,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,98.4%
+Kevin De Bruyne,2024 - 2025,Relu,5,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,98.4%
+Kevin De Bruyne,2024 - 2025,Tanh,1,Alex Baena,23,Villarreal,"MF,FW",ESP-La Liga,2024 - 2025,85.9%
+Kevin De Bruyne,2024 - 2025,Tanh,2,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,83.8%
+Kevin De Bruyne,2024 - 2025,Tanh,3,Harvey Elliott,20,Liverpool,"MF,FW",ENG-Premier League,2023 - 2024,83.3%
+Kevin De Bruyne,2024 - 2025,Tanh,4,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,82.7%
+Kevin De Bruyne,2024 - 2025,Tanh,5,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,80.7%
+Kevin De Bruyne,2024 - 2025,Tanh + Dropout,1,Jakub Kamiński,22,Wolfsburg,"DF,MF",GER-Bundesliga,2024 - 2025,92.2%
+Kevin De Bruyne,2024 - 2025,Tanh + Dropout,2,Mitchell van Bergen,22,Reims,"FW,DF",FRA-Ligue 1,2022 - 2023,91.2%
+Kevin De Bruyne,2024 - 2025,Tanh + Dropout,3,Fares Chaïbi,20,Eint Frankfurt,"MF,FW",GER-Bundesliga,2023 - 2024,90.6%
+Kevin De Bruyne,2024 - 2025,Tanh + Dropout,4,Giacomo Raspadori,23,Napoli,"FW,MF",ITA-Serie A,2023 - 2024,90.6%
+Kevin De Bruyne,2024 - 2025,Tanh + Dropout,5,Arda Güler,19,Real Madrid,"MF,FW",ESP-La Liga,2024 - 2025,90.4%
+Manuel Locatelli,2024 - 2025,Ensemble,1,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,83.8%
+Manuel Locatelli,2024 - 2025,Ensemble,2,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,83.2%
+Manuel Locatelli,2024 - 2025,Ensemble,3,Moisés Caicedo,20,Brighton,MF,ENG-Premier League,2022 - 2023,81.7%
+Manuel Locatelli,2024 - 2025,Ensemble,4,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,80.7%
+Manuel Locatelli,2024 - 2025,Ensemble,5,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,80.4%
+Manuel Locatelli,2024 - 2025,Mix ReLU,1,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,95.2%
+Manuel Locatelli,2024 - 2025,Mix ReLU,2,Nico Schlotterbeck,23,Dortmund,DF,GER-Bundesliga,2023 - 2024,94.9%
+Manuel Locatelli,2024 - 2025,Mix ReLU,3,Dayot Upamecano,23,Bayern Munich,DF,GER-Bundesliga,2022 - 2023,94.7%
+Manuel Locatelli,2024 - 2025,Mix ReLU,4,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,94.6%
+Manuel Locatelli,2024 - 2025,Mix ReLU,5,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,94.1%
+Manuel Locatelli,2024 - 2025,Mix Tanh,1,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,82.2%
+Manuel Locatelli,2024 - 2025,Mix Tanh,2,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,80.8%
+Manuel Locatelli,2024 - 2025,Mix Tanh,3,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,78.8%
+Manuel Locatelli,2024 - 2025,Mix Tanh,4,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,76.8%
+Manuel Locatelli,2024 - 2025,Mix Tanh,5,Kevin Danso,23,Lens,DF,FRA-Ligue 1,2022 - 2023,75.1%
+Manuel Locatelli,2024 - 2025,ReLU + Dropout,1,Enzo Barrenechea,23,Valencia,MF,ESP-La Liga,2024 - 2025,98.5%
+Manuel Locatelli,2024 - 2025,ReLU + Dropout,2,Samuele Ricci,22,Torino,MF,ITA-Serie A,2024 - 2025,98.5%
+Manuel Locatelli,2024 - 2025,ReLU + Dropout,3,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,98.2%
+Manuel Locatelli,2024 - 2025,ReLU + Dropout,4,Johann Lepenant,19,Lyon,MF,FRA-Ligue 1,2022 - 2023,98.1%
+Manuel Locatelli,2024 - 2025,ReLU + Dropout,5,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,98.1%
+Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,1,Nico Schlotterbeck,23,Dortmund,DF,GER-Bundesliga,2023 - 2024,83.3%
+Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,2,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,77.9%
+Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,3,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,77.8%
+Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,4,Declan Rice,23,West Ham,MF,ENG-Premier League,2022 - 2023,76.7%
+Manuel Locatelli,2024 - 2025,ReLU + Tanh bottleneck,5,Jean-Clair Todibo,23,Nice,DF,FRA-Ligue 1,2023 - 2024,76.6%
+Manuel Locatelli,2024 - 2025,Relu,1,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,99.0%
+Manuel Locatelli,2024 - 2025,Relu,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,98.9%
+Manuel Locatelli,2024 - 2025,Relu,3,Alessandro Bianco,21,Monza,MF,ITA-Serie A,2024 - 2025,98.9%
+Manuel Locatelli,2024 - 2025,Relu,4,Enzo Fernández,22,Chelsea,MF,ENG-Premier League,2023 - 2024,98.8%
+Manuel Locatelli,2024 - 2025,Relu,5,Fran Beltrán,23,Celta Vigo,MF,ESP-La Liga,2022 - 2023,98.8%
+Manuel Locatelli,2024 - 2025,Tanh,1,Nicolò Rovella,22,Lazio,MF,ITA-Serie A,2024 - 2025,89.5%
+Manuel Locatelli,2024 - 2025,Tanh,2,Angelo Stiller,22,Stuttgart,MF,GER-Bundesliga,2023 - 2024,85.7%
+Manuel Locatelli,2024 - 2025,Tanh,3,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,84.6%
+Manuel Locatelli,2024 - 2025,Tanh,4,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,84.4%
+Manuel Locatelli,2024 - 2025,Tanh,5,Moisés Caicedo,20,Brighton,MF,ENG-Premier League,2022 - 2023,83.2%
+Manuel Locatelli,2024 - 2025,Tanh + Dropout,1,Mario Gila,23,Lazio,DF,ITA-Serie A,2024 - 2025,90.7%
+Manuel Locatelli,2024 - 2025,Tanh + Dropout,2,Moisés Caicedo,20,Brighton,MF,ENG-Premier League,2022 - 2023,89.0%
+Manuel Locatelli,2024 - 2025,Tanh + Dropout,3,Enzo Barrenechea,22,Frosinone,MF,ITA-Serie A,2023 - 2024,87.2%
+Manuel Locatelli,2024 - 2025,Tanh + Dropout,4,Moisés Caicedo,21,Chelsea,MF,ENG-Premier League,2023 - 2024,86.9%
+Manuel Locatelli,2024 - 2025,Tanh + Dropout,5,Moisés Caicedo,22,Chelsea,"MF,DF",ENG-Premier League,2024 - 2025,86.6%
+Riccardo Orsolini,2024 - 2025,Ensemble,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,92.4%
+Riccardo Orsolini,2024 - 2025,Ensemble,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,86.3%
+Riccardo Orsolini,2024 - 2025,Ensemble,3,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,86.2%
+Riccardo Orsolini,2024 - 2025,Ensemble,4,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,85.8%
+Riccardo Orsolini,2024 - 2025,Ensemble,5,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,82.7%
+Riccardo Orsolini,2024 - 2025,Mix ReLU,1,Michael Olise,21,Crystal Palace,"FW,MF",ENG-Premier League,2023 - 2024,98.7%
+Riccardo Orsolini,2024 - 2025,Mix ReLU,2,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,98.7%
+Riccardo Orsolini,2024 - 2025,Mix ReLU,3,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,98.6%
+Riccardo Orsolini,2024 - 2025,Mix ReLU,4,Adam Hložek,22,Hoffenheim,"FW,MF",GER-Bundesliga,2024 - 2025,98.6%
+Riccardo Orsolini,2024 - 2025,Mix ReLU,5,Karim Adeyemi,20,Dortmund,"FW,MF",GER-Bundesliga,2022 - 2023,98.3%
+Riccardo Orsolini,2024 - 2025,Mix Tanh,1,Adam Hložek,22,Hoffenheim,"FW,MF",GER-Bundesliga,2024 - 2025,82.2%
+Riccardo Orsolini,2024 - 2025,Mix Tanh,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,79.8%
+Riccardo Orsolini,2024 - 2025,Mix Tanh,3,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,77.9%
+Riccardo Orsolini,2024 - 2025,Mix Tanh,4,Benjamin Šeško,20,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,77.8%
+Riccardo Orsolini,2024 - 2025,Mix Tanh,5,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,77.1%
+Riccardo Orsolini,2024 - 2025,ReLU + Dropout,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,99.6%
+Riccardo Orsolini,2024 - 2025,ReLU + Dropout,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,99.1%
+Riccardo Orsolini,2024 - 2025,ReLU + Dropout,3,Lucas Beltrán,22,Fiorentina,"FW,MF",ITA-Serie A,2023 - 2024,99.0%
+Riccardo Orsolini,2024 - 2025,ReLU + Dropout,4,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,98.6%
+Riccardo Orsolini,2024 - 2025,ReLU + Dropout,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,98.3%
+Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,90.5%
+Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,2,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,84.8%
+Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,3,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,83.9%
+Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,4,Benjamin Šeško,21,RB Leipzig,"FW,MF",GER-Bundesliga,2024 - 2025,80.2%
+Riccardo Orsolini,2024 - 2025,ReLU + Tanh bottleneck,5,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,77.8%
+Riccardo Orsolini,2024 - 2025,Relu,1,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,99.4%
+Riccardo Orsolini,2024 - 2025,Relu,2,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,99.2%
+Riccardo Orsolini,2024 - 2025,Relu,3,Alexander Isak,23,Newcastle Utd,FW,ENG-Premier League,2023 - 2024,99.0%
+Riccardo Orsolini,2024 - 2025,Relu,4,Georges Mikautadze,23,Lyon,FW,FRA-Ligue 1,2024 - 2025,98.9%
+Riccardo Orsolini,2024 - 2025,Relu,5,Bryan Mbeumo,23,Brentford,FW,ENG-Premier League,2023 - 2024,98.8%
+Riccardo Orsolini,2024 - 2025,Tanh,1,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,95.0%
+Riccardo Orsolini,2024 - 2025,Tanh,2,Jonathan Burkardt,23,Mainz 05,"FW,MF",GER-Bundesliga,2023 - 2024,91.3%
+Riccardo Orsolini,2024 - 2025,Tanh,3,Benjamin Šeško,20,RB Leipzig,FW,GER-Bundesliga,2023 - 2024,87.9%
+Riccardo Orsolini,2024 - 2025,Tanh,4,Adam Hložek,22,Hoffenheim,"FW,MF",GER-Bundesliga,2024 - 2025,87.5%
+Riccardo Orsolini,2024 - 2025,Tanh,5,Fábio Silva,22,Las Palmas,FW,ESP-La Liga,2024 - 2025,86.8%
+Riccardo Orsolini,2024 - 2025,Tanh + Dropout,1,Ibrahima Koné,23,Lorient,FW,FRA-Ligue 1,2022 - 2023,92.1%
+Riccardo Orsolini,2024 - 2025,Tanh + Dropout,2,Georges Mikautadze,22,Metz,FW,FRA-Ligue 1,2023 - 2024,91.7%
+Riccardo Orsolini,2024 - 2025,Tanh + Dropout,3,Cyril Ngonge,23,Hellas Verona,"FW,MF",ITA-Serie A,2023 - 2024,91.3%
+Riccardo Orsolini,2024 - 2025,Tanh + Dropout,4,Nick Woltemade,22,Stuttgart,"FW,MF",GER-Bundesliga,2024 - 2025,90.7%
+Riccardo Orsolini,2024 - 2025,Tanh + Dropout,5,Danilo,21,Nott'ham Forest,MF,ENG-Premier League,2022 - 2023,89.6%
+Xavi Simons,2024 - 2025,Ensemble,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,91.5%
+Xavi Simons,2024 - 2025,Ensemble,2,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,89.2%
+Xavi Simons,2024 - 2025,Ensemble,3,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,84.8%
+Xavi Simons,2024 - 2025,Ensemble,4,Dilane Bakwa,21,Strasbourg,"MF,DF",FRA-Ligue 1,2024 - 2025,84.7%
+Xavi Simons,2024 - 2025,Ensemble,5,Kenan Yıldız,19,Juventus,"FW,MF",ITA-Serie A,2024 - 2025,83.8%
 Xavi Simons,2024 - 2025,Mix ReLU,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,99.1%
-Xavi Simons,2024 - 2025,Mix ReLU,2,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,99.0%
-Xavi Simons,2024 - 2025,Mix ReLU,3,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,98.9%
-Xavi Simons,2024 - 2025,Mix ReLU,4,Hákon Arnar Haraldsson,21,Lille,"MF,FW",FRA-Ligue 1,2024 - 2025,98.9%
-Xavi Simons,2024 - 2025,Mix ReLU,5,Diego López,22,Valencia,"MF,FW",ESP-La Liga,2024 - 2025,98.6%
-Xavi Simons,2024 - 2025,Mix Tanh,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,87.8%
-Xavi Simons,2024 - 2025,Mix Tanh,2,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,83.3%
-Xavi Simons,2024 - 2025,Mix Tanh,3,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,80.5%
-Xavi Simons,2024 - 2025,Mix Tanh,4,Armand Lauriente,23,Sassuolo,FW,ITA-Serie A,2022 - 2023,79.4%
-Xavi Simons,2024 - 2025,Mix Tanh,5,Phil Foden,23,Manchester City,"FW,MF",ENG-Premier League,2023 - 2024,77.6%
-Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,91.4%
-Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,2,Kenan Yıldız,19,Juventus,"FW,MF",ITA-Serie A,2024 - 2025,89.8%
-Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,3,Phil Foden,23,Manchester City,"FW,MF",ENG-Premier League,2023 - 2024,87.6%
-Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,4,Gabriel Martinelli,21,Arsenal,FW,ENG-Premier League,2022 - 2023,86.6%
-Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,5,Takefusa Kubo,22,Real Sociedad,"FW,MF",ESP-La Liga,2023 - 2024,86.5%
-Xavi Simons,2024 - 2025,ReLu + Dropout,1,Hákon Arnar Haraldsson,21,Lille,"MF,FW",FRA-Ligue 1,2024 - 2025,98.8%
-Xavi Simons,2024 - 2025,ReLu + Dropout,2,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,98.6%
-Xavi Simons,2024 - 2025,ReLu + Dropout,3,Martin Ødegaard,23,Arsenal,MF,ENG-Premier League,2022 - 2023,98.3%
-Xavi Simons,2024 - 2025,ReLu + Dropout,4,Maghnes Akliouche,21,Monaco,"MF,FW",FRA-Ligue 1,2023 - 2024,97.6%
-Xavi Simons,2024 - 2025,ReLu + Dropout,5,Michael Olise,21,Crystal Palace,"FW,MF",ENG-Premier League,2023 - 2024,97.6%
-Xavi Simons,2024 - 2025,Relu,1,Jamal Musiala,19,Bayern Munich,"MF,FW",GER-Bundesliga,2022 - 2023,99.1%
-Xavi Simons,2024 - 2025,Relu,2,Alex Baena,21,Villarreal,"MF,FW",ESP-La Liga,2022 - 2023,99.1%
-Xavi Simons,2024 - 2025,Relu,3,Rafael Leão,23,Milan,"FW,MF",ITA-Serie A,2022 - 2023,98.7%
-Xavi Simons,2024 - 2025,Relu,4,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,98.7%
-Xavi Simons,2024 - 2025,Relu,5,Florian Wirtz,20,Leverkusen,MF,GER-Bundesliga,2023 - 2024,98.6%
-Xavi Simons,2024 - 2025,Tanh,1,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,87.9%
-Xavi Simons,2024 - 2025,Tanh,2,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,87.7%
-Xavi Simons,2024 - 2025,Tanh,3,Takefusa Kubo,22,Real Sociedad,"FW,MF",ESP-La Liga,2023 - 2024,84.3%
-Xavi Simons,2024 - 2025,Tanh,4,Jeremy Doku,20,Rennes,"MF,FW",FRA-Ligue 1,2022 - 2023,83.3%
-Xavi Simons,2024 - 2025,Tanh,5,Malick Fofana,19,Lyon,FW,FRA-Ligue 1,2024 - 2025,79.9%
-Xavi Simons,2024 - 2025,Tanh + Dropout,1,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,90.8%
-Xavi Simons,2024 - 2025,Tanh + Dropout,2,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,90.0%
-Xavi Simons,2024 - 2025,Tanh + Dropout,3,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,88.8%
-Xavi Simons,2024 - 2025,Tanh + Dropout,4,Vitinha,23,Paris S-G,MF,FRA-Ligue 1,2023 - 2024,88.4%
-Xavi Simons,2024 - 2025,Tanh + Dropout,5,Takefusa Kubo,22,Real Sociedad,"FW,MF",ESP-La Liga,2023 - 2024,88.3%
+Xavi Simons,2024 - 2025,Mix ReLU,2,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,98.7%
+Xavi Simons,2024 - 2025,Mix ReLU,3,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,98.3%
+Xavi Simons,2024 - 2025,Mix ReLU,4,Jamal Musiala,19,Bayern Munich,"MF,FW",GER-Bundesliga,2022 - 2023,98.3%
+Xavi Simons,2024 - 2025,Mix ReLU,5,Maghnes Akliouche,21,Monaco,"MF,FW",FRA-Ligue 1,2023 - 2024,98.2%
+Xavi Simons,2024 - 2025,Mix Tanh,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,88.6%
+Xavi Simons,2024 - 2025,Mix Tanh,2,Phil Foden,23,Manchester City,"FW,MF",ENG-Premier League,2023 - 2024,83.0%
+Xavi Simons,2024 - 2025,Mix Tanh,3,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,80.5%
+Xavi Simons,2024 - 2025,Mix Tanh,4,Martin Ødegaard,23,Arsenal,MF,ENG-Premier League,2022 - 2023,80.4%
+Xavi Simons,2024 - 2025,Mix Tanh,5,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,79.8%
+Xavi Simons,2024 - 2025,ReLU + Dropout,1,Hákon Arnar Haraldsson,21,Lille,"MF,FW",FRA-Ligue 1,2024 - 2025,99.9%
+Xavi Simons,2024 - 2025,ReLU + Dropout,2,Martin Ødegaard,23,Arsenal,MF,ENG-Premier League,2022 - 2023,99.8%
+Xavi Simons,2024 - 2025,ReLU + Dropout,3,Phil Foden,23,Manchester City,"FW,MF",ENG-Premier League,2023 - 2024,99.7%
+Xavi Simons,2024 - 2025,ReLU + Dropout,4,Rafael Leão,23,Milan,"FW,MF",ITA-Serie A,2022 - 2023,99.4%
+Xavi Simons,2024 - 2025,ReLU + Dropout,5,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,99.4%
+Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,92.6%
+Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,2,Phil Foden,23,Manchester City,"FW,MF",ENG-Premier League,2023 - 2024,90.2%
+Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,3,Luis Henrique,22,Marseille,"DF,FW",FRA-Ligue 1,2024 - 2025,88.1%
+Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,4,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,86.8%
+Xavi Simons,2024 - 2025,ReLU + Tanh bottleneck,5,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,82.2%
+Xavi Simons,2024 - 2025,Relu,1,Michael Olise,22,Bayern Munich,"FW,MF",GER-Bundesliga,2024 - 2025,98.9%
+Xavi Simons,2024 - 2025,Relu,2,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,98.9%
+Xavi Simons,2024 - 2025,Relu,3,Rayan Cherki,20,Lyon,"FW,MF",FRA-Ligue 1,2024 - 2025,98.9%
+Xavi Simons,2024 - 2025,Relu,4,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,98.9%
+Xavi Simons,2024 - 2025,Relu,5,Kenan Yıldız,19,Juventus,"FW,MF",ITA-Serie A,2024 - 2025,98.7%
+Xavi Simons,2024 - 2025,Tanh,1,Phil Foden,22,Manchester City,FW,ENG-Premier League,2022 - 2023,91.9%
+Xavi Simons,2024 - 2025,Tanh,2,Rodrygo,23,Real Madrid,"FW,MF",ESP-La Liga,2024 - 2025,90.1%
+Xavi Simons,2024 - 2025,Tanh,3,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,89.8%
+Xavi Simons,2024 - 2025,Tanh,4,Paul Nebel,21,Mainz 05,MF,GER-Bundesliga,2024 - 2025,88.4%
+Xavi Simons,2024 - 2025,Tanh,5,Vitinha,23,Paris S-G,MF,FRA-Ligue 1,2023 - 2024,87.6%
+Xavi Simons,2024 - 2025,Tanh + Dropout,1,Matìas Soulé,21,Roma,"MF,DF",ITA-Serie A,2024 - 2025,95.6%
+Xavi Simons,2024 - 2025,Tanh + Dropout,2,Callum Hudson-Odoi,22,Nott'ham Forest,"FW,MF",ENG-Premier League,2023 - 2024,93.9%
+Xavi Simons,2024 - 2025,Tanh + Dropout,3,Takefusa Kubo,22,Real Sociedad,"FW,MF",ESP-La Liga,2023 - 2024,93.5%
+Xavi Simons,2024 - 2025,Tanh + Dropout,4,Yan Couto,20,Girona,"DF,MF",ESP-La Liga,2022 - 2023,92.4%
+Xavi Simons,2024 - 2025,Tanh + Dropout,5,Jeremy Doku,20,Rennes,"MF,FW",FRA-Ligue 1,2022 - 2023,91.7%
