@@ -11,9 +11,9 @@ st.markdown("Search engine based on a Neural Autoencoder Ensemble.")
 @st.cache_data
 def load_databases():
     # Loading the directly saved CSV files
-    df_a = pd.read_csv('database_dna_a.csv')
-    df_b = pd.read_csv('database_dna_b.csv')
-    df_c = pd.read_csv('database_dna_c.csv')
+    df_a = pd.read_csv('saved_models\database_dna_a.csv')
+    df_b = pd.read_csv('saved_models\database_dna_b.csv')
+    df_c = pd.read_csv('saved_models\database_dna_c.csv')
     data = pd.read_csv('merged_data.csv')
     return df_a, df_b, df_c, data
 
