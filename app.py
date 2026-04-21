@@ -54,6 +54,11 @@ colonne_ae = [f'AE_{i+1}' for i in range(10)]
 # List of available seasons for the dropdown menus
 available_seasons = sorted(df_latente_a['season'].unique(), reverse=True)
 available_players = sorted(df_latente_a['player'].unique())
+player_to_seasons = (
+    df_latente_a.groupby('player')['season']
+    .apply(lambda seasons: sorted(seasons.unique(), reverse=True))
+    .to_dict()
+)
 
 # --- 3. SEARCH ENGINE FUNCTION ---
 def search_similar_players(player_name, player_season, top_n, max_age, season_filter, same_position, same_league, preferred_foot_filter):
@@ -126,7 +131,14 @@ def search_similar_players(player_name, player_season, top_n, max_age, season_fi
 with st.sidebar:
     st.header("🎯 Target Player")
     input_name = st.selectbox("Player Name:", available_players, index=None, placeholder="Select Player")
-    input_season = st.selectbox("Reference Season:", available_seasons)
+    available_player_seasons = player_to_seasons.get(input_name, []) if input_name else []
+    input_season = st.selectbox(
+        "Reference Season:",
+        available_player_seasons,
+        index=0 if available_player_seasons else None,
+        placeholder="Select player first",
+        disabled=input_name is None or len(available_player_seasons) == 0
+    )
     
     st.divider()
     
@@ -153,11 +165,11 @@ with st.sidebar:
         "Find Similar Players",
         type="primary",
         use_container_width=True,
-        disabled=input_name is None
+        disabled=input_name is None or input_season is None
     )
 
 # --- 5. EXECUTE SEARCH ---
-if btn_search and input_name is not None:
+if btn_search and input_name is not None and input_season is not None:
     with st.spinner("Scanning the European database..."):
         # Format the season filter variable for the function
         func_season_filter = None if val_season_filter == "All" else val_season_filter
