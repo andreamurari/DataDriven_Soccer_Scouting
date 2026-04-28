@@ -19,36 +19,6 @@ def load_databases():
 
 df_latente_a, df_latente_b, df_latente_c, data = load_databases()
 
-def add_preferred_foot(df_latente, merged_data):
-    def normalize_season(value):
-        text = str(value).strip()
-        if len(text) == 9 and text[4] == '-' and text[:4].isdigit() and text[5:].isdigit():
-            return text[2:4] + text[7:9]
-        if len(text) == 11 and text[4:7] == ' - ' and text[:4].isdigit() and text[7:].isdigit():
-            return text[2:4] + text[9:11]
-        return text
-
-    left = df_latente.copy()
-    right = merged_data[['league', 'season', 'team', 'player', 'Preferred foot']].copy()
-
-    left['season_norm'] = left['season'].map(normalize_season)
-    right['season_norm'] = right['season'].map(normalize_season)
-
-    right = right.drop(columns=['season']).drop_duplicates(
-        subset=['league', 'season_norm', 'team', 'player'], keep='first'
-    )
-
-    merged = left.merge(
-        right,
-        on=['league', 'season_norm', 'team', 'player'],
-        how='left'
-    )
-    merged = merged.drop(columns=['season_norm'])
-    return merged.rename(columns={'Preferred foot': 'preferred_foot'})
-
-df_latente_a = add_preferred_foot(df_latente_a, data)
-df_latente_b = add_preferred_foot(df_latente_b, data)
-df_latente_c = add_preferred_foot(df_latente_c, data)
 colonne_ae = [f'AE_{i+1}' for i in range(10)]
 
 # List of available seasons for the dropdown menus
