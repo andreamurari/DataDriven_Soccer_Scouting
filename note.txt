@@ -1,0 +1,1 @@
+Clustering su tutto il dataset e poi vedere all'interno di ogni cluster se vi sono giocatori anomali e quali feature sono piu importanti per ogni cluster
