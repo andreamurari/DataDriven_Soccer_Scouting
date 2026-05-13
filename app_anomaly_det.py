@@ -5,6 +5,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from cluster_functions import plot_cluster_positions, plot_cluster_league
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -121,58 +122,6 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
         st.info(f"✅ No anomalies found in this cluster. All {len(cluster_data)} players are {dominant_pos}s.")
 
 
-def plot_cluster_positions(cluster_id, df_clusters):
-    """Create bar plot of position distribution in a cluster"""
-    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-    pos_counts = cluster_data['pos'].value_counts().reset_index()
-    pos_counts.columns = ['Position', 'Count']
-    
-    # Get unique positions for consistent coloring
-    unique_positions = sorted(df_clusters['pos'].unique())
-    
-    fig = px.bar(
-        pos_counts,
-        x='Position',
-        y='Count',
-        title=f'Position Distribution in Cluster {cluster_id}',
-        labels={'Count': 'Number of Players', 'Position': 'Position'},
-        color='Position',
-        text='Count',
-        color_discrete_sequence=px.colors.qualitative.Set3
-    )
-    fig.update_traces(textposition='auto')
-    fig.update_layout(
-        title_x=0.5,
-        height=400,
-        showlegend=False
-    )
-    return fig
-
-
-def plot_cluster_league(cluster_id, df_clusters):
-    """Create bar plot of league distribution in a cluster"""
-    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-    league_counts = cluster_data['league'].value_counts().reset_index()
-    league_counts.columns = ['League', 'Count']
-    
-    fig = px.bar(
-        league_counts,
-        x='League',
-        y='Count',
-        title=f'League Distribution in Cluster {cluster_id}',
-        labels={'Count': 'Number of Players', 'League': 'League'},
-        color='League',
-        text='Count',
-        color_discrete_sequence=px.colors.qualitative.Pastel
-    )
-    fig.update_traces(textposition='auto')
-    fig.update_layout(
-        title_x=0.5,
-        height=400,
-        xaxis_tickangle=-45,
-        showlegend=False
-    )
-    return fig
 
 
 # ============================================================================
