@@ -19,8 +19,5 @@ env/
 __pycache__/
 *.py[cod]
 
-# Dati pesanti (se ne hai)
-*.csv
-*.xlsx
 
 
