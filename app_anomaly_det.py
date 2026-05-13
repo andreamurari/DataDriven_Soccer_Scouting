@@ -5,7 +5,7 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
-from cluster_functions import plot_cluster_positions, plot_cluster_league
+from cluster_functions import plot_cluster_positions, plot_cluster_league, analyze_cluster
 import warnings
 warnings.filterwarnings("ignore")
 
@@ -45,86 +45,6 @@ def load_data():
     return df_clusters, df_cluster_profile, glossary_dict
 
 # ============================================================================
-# HELPER FUNCTIONS
-# ============================================================================
-
-def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
-    """
-    Display cluster analysis with dominant position, features, and anomalies
-    """
-    # Extract dominant position
-    dominant_role = df_cluster_profile.loc[cluster_id, "dominant_role"]
-    dominant_pos = dominant_role.split(" ")[0]
-    
-    # Get cluster data
-    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-    
-    # Display analysis
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.metric("Cluster Size", len(cluster_data), "players")
-    
-    with col2:
-        st.metric("Dominant Position", dominant_pos)
-    
-    with col3:
-        st.metric("Total Positions", cluster_data['pos'].nunique())
-    
-    # Display profile features
-    st.subheader("📊 Cluster Profile Features")
-    
-    feature_cols = st.columns(2)
-    
-    with feature_cols[0]:
-        st.write("**Positive Features (Strengths):**")
-        for col in ['top_pos_1', 'top_pos_2', 'top_pos_3']:
-            feature = df_cluster_profile.loc[cluster_id, col]
-            if feature != "-":
-                st.write(f"• {feature}")
-                # Add glossary explanation if available
-                feature_name = feature.split(" (")[0]
-                if feature_name in glossary_dict:
-                    with st.expander(f"ℹ️ {feature_name}"):
-                        st.write(glossary_dict[feature_name])
-    
-    with feature_cols[1]:
-        st.write("**Negative Features (Weaknesses):**")
-        for col in ['top_neg_1', 'top_neg_2', 'top_neg_3']:
-            feature = df_cluster_profile.loc[cluster_id, col]
-            if feature != "-":
-                st.write(f"• {feature}")
-                # Add glossary explanation if available
-                feature_name = feature.split(" (")[0]
-                if feature_name in glossary_dict:
-                    with st.expander(f"ℹ️ {feature_name}"):
-                        st.write(glossary_dict[feature_name])
-    
-    # Display scouting report
-    st.subheader("🎯 Scouting Report")
-    st.info(df_cluster_profile.loc[cluster_id, "scouting_report"])
-    
-    # Display position distribution in cluster
-    st.subheader("📍 Position Distribution")
-    pos_counts = cluster_data['pos'].value_counts().reset_index()
-    pos_counts.columns = ['Position', 'Count']
-    pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
-    st.dataframe(pos_counts, use_container_width=True, hide_index=True)
-    
-    # Display anomalies (players not matching dominant position)
-    if len(cluster_data[cluster_data['pos'] != dominant_pos]) > 0:
-        st.subheader("⚠️ Tactical Anomalies")
-        anomalies = cluster_data[cluster_data['pos'] != dominant_pos][
-            ['player', 'pos', 'team', 'season', 'league']
-        ].sort_values(['pos', 'player'])
-        st.dataframe(anomalies, use_container_width=True, hide_index=True)
-    else:
-        st.info(f"✅ No anomalies found in this cluster. All {len(cluster_data)} players are {dominant_pos}s.")
-
-
-
-
-# ============================================================================
 # MAIN APP
 # ============================================================================
 
@@ -147,41 +67,42 @@ def main():
         with st.expander("📚 What is K-Means Clustering?", expanded=True):
             st.markdown("""
             **K-Means Clustering** is an unsupervised machine learning algorithm that groups players 
-            into clusters based on their statistical profiles (e.g., pace, shooting, dribbling, defense, etc.).
+            into clusters based on their statistical profiles (e.g., passing, shooting, dribbling, defense, etc.).
             
             ### How It Works:
-            1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids)
-            2. **Assignment**: Each player is assigned to the nearest cluster based on Euclidean distance
-            3. **Update**: Cluster centers are recalculated based on the mean of assigned players
-            4. **Iteration**: Steps 2-3 repeat until convergence
+            1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids).
+            2. **Assignment**: Each player is assigned to the nearest cluster. *(Thanks to our normalization process, this distance effectively acts as Cosine Similarity, grouping players by the "angle" of their playstyle rather than sheer volume).*
+            3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
+            4. **Iteration**: Steps 2-3 repeat until convergence.
             
             ### Why K-Means for Soccer Scouting?
-            - **Tactical Profiling**: Players in the same cluster share similar playing styles
-            - **Anomaly Detection**: Identify players who don't fit their assigned position
-            - **Scouting Shortcuts**: Find similar players to targets across different leagues/teams
-            - **Talent Benchmarking**: Compare player profiles to established tactical templates
+            - **Tactical Profiling**: Players in the same cluster share similar playing styles, regardless of how much possession their team averages.
+            - **Anomaly Detection**: Identify players who don't fit their assigned position (e.g., a CB playing like a deep-lying playmaker).
+            - **Scouting Shortcuts**: Find similar players to targets across different leagues/teams.
+            - **Talent Benchmarking**: Compare player profiles to established tactical templates.
             """)
         
         with st.expander("🔧 How We Built This Model", expanded=False):
             st.markdown("""
             ### Data Preparation:
-            - **Removed Noisy Features**: Excluded playing time and penalty metrics that introduce noise
-            - **Standardization**: Scaled all features to mean=0, std=1 using StandardScaler
-            - **Removed Goalkeepers**: Excluded GK (different statistical universe)
-            - **Removed Missing Values**: Only players with complete feature profiles
+            - **Removed Noisy Features**: Excluded playing time (`90s`, `Starts`) and penalty metrics (`PK`) to prevent the model from grouping players by "status" (starter vs. bench) instead of tactics.
+            - **Standardization**: Scaled all features to mean=0, std=1 using `StandardScaler`.
+            - **L2 Normalization (The Secret Sauce)**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
+            - **Removed Goalkeepers**: Excluded GK (different statistical universe).
+            - **Removed Missing Values**: Only players with complete feature profiles were included.
             
             ### Model Parameters:
-            - **Number of Clusters (k)**: 20 clusters
-            - **Initialization**: 10 random seeds (n_init=10) for stability
-            - **Random State**: 42 for reproducibility
-            - **Metric**: Euclidean distance
+            - **Number of Clusters (k)**: 20 clusters (Optimized to isolate specific tactical micro-roles).
+            - **Initialization**: 50 random seeds (`n_init=50`) to guarantee absolute mathematical stability.
+            - **Random State**: 42 for reproducibility.
+            - **Metric**: Euclidean distance on L2-Normalized data (mathematically equivalent to **Cosine Similarity**).
             
             ### Cluster Profiles:
             Each cluster is characterized by its:
-            - **Top 3 Positive Features**: What the cluster excels at
-            - **Top 3 Negative Features**: What the cluster lacks
-            - **Dominant Role**: Most common position in the cluster
-            - **Scouting Report**: Human-readable interpretation of the cluster's playing style
+            - **Top 3 Positive Features (📈)**: The extreme Z-scores showing what the cluster excels at compared to the European average.
+            - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster actively avoids doing.
+            - **Dominant Role**: Most common nominal position in the cluster.
+            - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
             """)
         
         # Display cluster overview statistics

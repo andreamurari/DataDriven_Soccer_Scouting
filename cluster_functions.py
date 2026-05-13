@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import plotly.express as px
 import matplotlib.pyplot as plt
+import streamlit as st
 
 
 def plot_cluster_positions(cluster_id, df_clusters):
@@ -82,3 +83,77 @@ def plot_cluster_league(cluster_id, df_clusters):
     fig.update_layout(title_x=0.5, xaxis_tickangle=-45, showlegend=False)
     fig.show()
     return fig
+
+
+def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
+    """
+    Display cluster analysis with dominant position, features, and anomalies
+    """
+    # Extract dominant position
+    dominant_role = df_cluster_profile.loc[cluster_id, "dominant_role"]
+    dominant_pos = dominant_role.split(" ")[0]
+    
+    # Get cluster data
+    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+    
+    # Display analysis
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.metric("Cluster Size", len(cluster_data), "players")
+    
+    with col2:
+        st.metric("Dominant Position", dominant_pos)
+    
+    with col3:
+        st.metric("Total Positions", cluster_data['pos'].nunique())
+    
+    # Display profile features
+    st.subheader("📊 Cluster Profile Features")
+    
+    feature_cols = st.columns(2)
+    
+    with feature_cols[0]:
+        st.write("**Positive Features (Strengths):**")
+        for col in ['top_pos_1', 'top_pos_2', 'top_pos_3']:
+            feature = df_cluster_profile.loc[cluster_id, col]
+            if feature != "-":
+                st.write(f"• {feature}")
+                # Add glossary explanation if available
+                feature_name = feature.split(" (")[0]
+                if feature_name in glossary_dict:
+                    with st.expander(f"ℹ️ {feature_name}"):
+                        st.write(glossary_dict[feature_name])
+    
+    with feature_cols[1]:
+        st.write("**Negative Features (Weaknesses):**")
+        for col in ['top_neg_1', 'top_neg_2', 'top_neg_3']:
+            feature = df_cluster_profile.loc[cluster_id, col]
+            if feature != "-":
+                st.write(f"• {feature}")
+                # Add glossary explanation if available
+                feature_name = feature.split(" (")[0]
+                if feature_name in glossary_dict:
+                    with st.expander(f"ℹ️ {feature_name}"):
+                        st.write(glossary_dict[feature_name])
+    
+    # Display scouting report
+    st.subheader("🎯 Scouting Report")
+    st.info(df_cluster_profile.loc[cluster_id, "scouting_report"])
+    
+    # Display position distribution in cluster
+    st.subheader("📍 Position Distribution")
+    pos_counts = cluster_data['pos'].value_counts().reset_index()
+    pos_counts.columns = ['Position', 'Count']
+    pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
+    st.dataframe(pos_counts, use_container_width=True, hide_index=True)
+    
+    # Display anomalies (players not matching dominant position)
+    if len(cluster_data[cluster_data['pos'] != dominant_pos]) > 0:
+        st.subheader("⚠️ Tactical Anomalies")
+        anomalies = cluster_data[cluster_data['pos'] != dominant_pos][
+            ['player', 'pos', 'team', 'season', 'league']
+        ].sort_values(['pos', 'player'])
+        st.dataframe(anomalies, use_container_width=True, hide_index=True)
+    else:
+        st.info(f"✅ No anomalies found in this cluster. All {len(cluster_data)} players are {dominant_pos}s.")
