@@ -215,7 +215,7 @@ def main():
         st.dataframe(cluster_players, width='stretch', hide_index=True)
     
     # ========================================================================
-    # PAGE 3: COMPARE CLUSTERS
+    # PAGE 3: Overlapping Positions Analysis
     # ========================================================================
     elif page == "Compare Clusters":
         st.header("🔄 Compare Multiple Clusters")
