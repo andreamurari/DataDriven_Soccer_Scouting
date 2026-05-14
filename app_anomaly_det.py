@@ -107,74 +107,88 @@ def main():
             - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
             """)
         
-        col1, col2 = st.columns([0.3, 0.7])
+        with st.expander("📊 Cluster Distribution & Position Analysis", expanded=True):
+            col1, col2 = st.columns([0.3, 0.7])
+
+            with col1:
+                st.subheader("Cluster Overview")
+                st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
+                cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
+                cluster_dist = cluster_dist.merge(
+                    df_cluster_profile[['cluster', 'dominant_role']],
+                    on='cluster'
+                )
+                st.table(cluster_dist)
+
+
+            with col2:
+                st.subheader("Position Distribution Across Clusters")
+                # Create subplots (4 rows x 5 columns for 20 clusters)
+                fig = make_subplots(
+                    rows=4, cols=5,
+                    subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
+                    specs=[[{"secondary_y": False}] * 5 for _ in range(4)],
+                    vertical_spacing=0.12,
+                    horizontal_spacing=0.08
+                )
+
+                # Color map for positions
+                unique_positions = sorted(df_clusters['pos'].unique())
+                colors = px.colors.qualitative.Set3
+                pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
+
+                # Create a bar chart for each cluster
+                for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
+                    row = (cluster_idx // 5) + 1
+                    col = (cluster_idx % 5) + 1
+
+                    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+                    pos_dist = cluster_data['pos'].value_counts()
+
+                    for pos in pos_dist.index:
+                        fig.add_trace(
+                            go.Bar(
+                                x=[pos],
+                                y=[pos_dist[pos]],
+                                name=pos,
+                                marker_color=pos_colors[pos],
+                                showlegend=(cluster_idx == 0),
+                                hovertemplate=f"{pos}: %{{y}}<extra></extra>"
+                            ),
+                            row=row, col=col
+                        )
+
+                fig.update_layout(
+                    height=710,
+                    showlegend=False,
+                    barmode='stack',
+                    margin=dict(l=0, r=0, t=50, b=0)
+                )
+
+                fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
+
+                st.plotly_chart(fig, width='stretch')
+                st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
         
-        with col1:
-            st.subheader("Cluster Overview")
-            st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
-            cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
-            cluster_dist = cluster_dist.merge(
-                df_cluster_profile[['cluster', 'dominant_role']],
-                on='cluster'
-            )
-            st.table(cluster_dist)
+        # Display scouting reports in columns layout
+        with st.expander("Cluster Profiles & Scouting Reports"):
         
-        
-        with col2:
-            st.subheader("Position Distribution Across Clusters")
-            # Create subplots (4 rows x 5 columns for 20 clusters)
-            fig = make_subplots(
-                rows=4, cols=5,
-                subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
-                specs=[[{"secondary_y": False}] * 5 for _ in range(4)],
-                vertical_spacing=0.12,
-                horizontal_spacing=0.08
-            )
-            
-            # Color map for positions
-            unique_positions = sorted(df_clusters['pos'].unique())
-            colors = px.colors.qualitative.Set3
-            pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
-            
-            # Create a bar chart for each cluster
-            for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
-                row = (cluster_idx // 5) + 1
-                col = (cluster_idx % 5) + 1
-                
-                cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-                pos_dist = cluster_data['pos'].value_counts()
-                
-                for pos in pos_dist.index:
-                    fig.add_trace(
-                        go.Bar(
-                            x=[pos],
-                            y=[pos_dist[pos]],
-                            name=pos,
-                            marker_color=pos_colors[pos],
-                            showlegend=(cluster_idx == 0),
-                            hovertemplate=f"{pos}: %{{y}}<extra></extra>"
-                        ),
-                        row=row, col=col
-                    )
-            
-            fig.update_layout(
-                height=710,
-                showlegend=False,
-                barmode='stack',
-                margin=dict(l=0, r=0, t=50, b=0)
-            )
-            
-            fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
-            
-            st.plotly_chart(fig, width='stretch')
-            st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
-            
-        # Display scouting reports in expanders
-        st.subheader("Cluster Profiles & Scouting Reports")
-        for idx in sorted(df_cluster_profile['cluster'].unique()):
-            with st.expander(f"📋 Cluster {idx}: {df_cluster_profile.loc[idx, 'dominant_role']}"):
-                st.write(df_cluster_profile.loc[idx, 'scouting_report'])
-    
+            clusters = sorted(df_cluster_profile['cluster'].unique())
+            cols_per_row = 4
+
+            for i in range(0, len(clusters), cols_per_row):
+                cols = st.columns(cols_per_row)
+                cluster_batch = clusters[i:i+cols_per_row]
+
+                for col, cluster_id in zip(cols, cluster_batch):
+                    with col:
+                        with st.container(border=True):
+                            st.markdown(f"**📋 Cluster {cluster_id}**")
+                            st.markdown(f"*{df_cluster_profile.loc[cluster_id, 'dominant_role']}*")
+                            st.markdown(df_cluster_profile.loc[cluster_id, 'scouting_report'].split('-')[0])
+                            with st.expander(""):
+                                st.write(df_cluster_profile.loc[cluster_id, 'scouting_report'].split('-', 1)[1])
+
     # ========================================================================
     # PAGE 2: CLUSTER ANALYSIS
     # ========================================================================
