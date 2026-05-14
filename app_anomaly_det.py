@@ -5,6 +5,8 @@ import plotly.express as px
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 from sklearn.preprocessing import StandardScaler
+from plotly.subplots import make_subplots
+import plotly.graph_objects as go
 from cluster_functions import plot_cluster_positions, plot_cluster_league, analyze_cluster
 import warnings
 warnings.filterwarnings("ignore")
@@ -73,7 +75,7 @@ def main():
             1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids).
             2. **Assignment**: Each player is assigned to the nearest cluster. *(Thanks to our normalization process, this distance effectively acts as Cosine Similarity, grouping players by the "angle" of their playstyle rather than sheer volume).*
             3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
-            4. **Iteration**: Steps 2-3 repeat until convergence.
+            4. **Iteration**: Repeat until convergence.
             
             ### Why K-Means for Soccer Scouting?
             - **Tactical Profiling**: Players in the same cluster share similar playing styles, regardless of how much possession their team averages.
@@ -105,28 +107,66 @@ def main():
             - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
             """)
         
-        # Display cluster overview statistics
-        st.subheader("📊 Cluster Overview")
+        col1, col2 = st.columns([0.3, 0.7])
         
-        overview_metrics = st.columns(4)
-        with overview_metrics[0]:
-            st.metric("Total Clusters", 20)
-        with overview_metrics[1]:
-            st.metric("Total Players", len(df_clusters))
-        with overview_metrics[2]:
-            st.metric("Average Cluster Size", f"{len(df_clusters) // 20:.0f}")
-        with overview_metrics[3]:
-            st.metric("Unique Positions", df_clusters['pos'].nunique())
+        with col1:
+            st.subheader("Cluster Overview")
+            st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
+            cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
+            cluster_dist = cluster_dist.merge(
+                df_cluster_profile[['cluster', 'dominant_role']],
+                on='cluster'
+            )
+            st.table(cluster_dist)
         
-        # Cluster distribution table
-        st.subheader("Cluster Distribution")
-        cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
-        cluster_dist = cluster_dist.merge(
-            df_cluster_profile[['cluster', 'dominant_role']],
-            on='cluster'
-        )
-        st.dataframe(cluster_dist, use_container_width=True, hide_index=True)
         
+        with col2:
+            st.subheader("Position Distribution Across Clusters")
+            # Create subplots (4 rows x 5 columns for 20 clusters)
+            fig = make_subplots(
+                rows=4, cols=5,
+                subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
+                specs=[[{"secondary_y": False}] * 5 for _ in range(4)],
+                vertical_spacing=0.12,
+                horizontal_spacing=0.08
+            )
+            
+            # Color map for positions
+            unique_positions = sorted(df_clusters['pos'].unique())
+            colors = px.colors.qualitative.Set3
+            pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
+            
+            # Create a bar chart for each cluster
+            for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
+                row = (cluster_idx // 5) + 1
+                col = (cluster_idx % 5) + 1
+                
+                cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+                pos_dist = cluster_data['pos'].value_counts()
+                
+                for pos in pos_dist.index:
+                    fig.add_trace(
+                        go.Bar(
+                            x=[pos],
+                            y=[pos_dist[pos]],
+                            name=pos,
+                            marker_color=pos_colors[pos],
+                            showlegend=(cluster_idx == 0),
+                            hovertemplate=f"{pos}: %{{y}}<extra></extra>"
+                        ),
+                        row=row, col=col
+                    )
+            
+            fig.update_layout(
+                height=710,
+                showlegend=False,
+                barmode='stack',
+                margin=dict(l=0, r=0, t=50, b=0)
+            )
+            
+            st.plotly_chart(fig, width='stretch')
+            st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
+            
         # Display scouting reports in expanders
         st.subheader("Cluster Profiles & Scouting Reports")
         for idx in sorted(df_cluster_profile['cluster'].unique()):
@@ -158,13 +198,13 @@ def main():
         with viz_col1:
             st.plotly_chart(
                 plot_cluster_positions(cluster_id, df_clusters),
-                use_container_width=True
+                width='stretch'
             )
         
         with viz_col2:
             st.plotly_chart(
                 plot_cluster_league(cluster_id, df_clusters),
-                use_container_width=True
+                width='stretch'
             )
         
         # Player list for selected cluster
@@ -172,7 +212,7 @@ def main():
         cluster_players = df_clusters[df_clusters['cluster'] == cluster_id][
             ['player', 'pos', 'team', 'league', 'season', 'age', 'nation']
         ].sort_values(['pos', 'player']).reset_index(drop=True)
-        st.dataframe(cluster_players, use_container_width=True, hide_index=True)
+        st.dataframe(cluster_players, width='stretch', hide_index=True)
     
     # ========================================================================
     # PAGE 3: COMPARE CLUSTERS
@@ -238,13 +278,13 @@ def main():
         with comp_viz1:
             st.plotly_chart(
                 plot_cluster_positions(cluster_a, df_clusters),
-                use_container_width=True
+                width='stretch'
             )
         
         with comp_viz2:
             st.plotly_chart(
                 plot_cluster_positions(cluster_b, df_clusters),
-                use_container_width=True
+                width='stretch'
             )
         
         # Feature comparison table
@@ -272,7 +312,7 @@ def main():
         }
         
         comparison_df = pd.DataFrame(comparison_data)
-        st.dataframe(comparison_df, use_container_width=True, hide_index=True)
+        st.dataframe(comparison_df, width='stretch', hide_index=True)
 
 
 if __name__ == "__main__":
