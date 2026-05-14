@@ -25,15 +25,16 @@ def plot_cluster_positions(cluster_id, df_clusters):
         pos_counts,
         x='Position',
         y='Count',
-        title=f'Position Distribution in Cluster {cluster_id}',
         labels={'Count': 'Number of Players', 'Position': 'Position'},
         color='Position',
         color_discrete_map=color_map,
         text='Count'
     )
-    fig.update_traces(textposition='auto')
-    fig.update_layout(title_x=0.5)
-    fig.show()
+    fig.update_traces(textposition='auto', marker_line_width=1, marker_line_color='white')
+    fig.update_layout(
+        margin=dict(l=0, r=0, t=0, b=0),
+        showlegend=False
+    )
     return fig
 
 
@@ -72,20 +73,22 @@ def plot_cluster_league(cluster_id, df_clusters):
         league_data,
         x='League',
         y='Percentage',
-        title=f'League Distribution in Cluster {cluster_id} (Normalized by League Size)',
         labels={'Percentage': '% of League Players in Cluster', 'League': 'League'},
         text='Percentage',
         color='League',
         color_discrete_map=league_colors,
         hover_data={'Count_in_Cluster': True, 'Total_Count': True, 'Percentage': ':.1f'}
     )
-    fig.update_traces(textposition='auto', marker_line_width=2, marker_line_color='white')
-    fig.update_layout(title_x=0.5, xaxis_tickangle=-45, showlegend=False)
-    fig.show()
+    fig.update_traces(textposition='auto', marker_line_width=1, marker_line_color='white')
+    fig.update_layout(
+        xaxis_tickangle=-45, 
+        showlegend=False,
+        margin=dict(l=0, r=0, t=0, b=0)
+    )
     return fig
 
 
-def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
+def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict, show_metrics=True):
     """
     Display cluster analysis with dominant position, features, and anomalies
     """
@@ -96,17 +99,18 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
     # Get cluster data
     cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
     
-    # Display analysis
-    col1, col2, col3 = st.columns(3)
-    
-    with col1:
-        st.metric("Cluster Size", len(cluster_data), "players")
-    
-    with col2:
-        st.metric("Dominant Position", dominant_pos)
-    
-    with col3:
-        st.metric("Total Positions", cluster_data['pos'].nunique())
+    # Display analysis metrics (optional)
+    if show_metrics:
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            st.metric("Cluster Size", len(cluster_data), "players")
+        
+        with col2:
+            st.metric("Dominant Position", dominant_pos)
+        
+        with col3:
+            st.metric("Total Positions", cluster_data['pos'].nunique())
     
     # Display profile features
     st.subheader("📊 Cluster Profile Features")
@@ -118,11 +122,9 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
         for col in ['top_pos_1', 'top_pos_2', 'top_pos_3']:
             feature = df_cluster_profile.loc[cluster_id, col]
             if feature != "-":
-                st.write(f"• {feature}")
-                # Add glossary explanation if available
                 feature_name = feature.split(" (")[0]
                 if feature_name in glossary_dict:
-                    with st.expander(f"ℹ️ {feature_name}"):
+                    with st.expander(f"ℹ️ {feature}"):
                         st.write(glossary_dict[feature_name])
     
     with feature_cols[1]:
@@ -130,30 +132,38 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict):
         for col in ['top_neg_1', 'top_neg_2', 'top_neg_3']:
             feature = df_cluster_profile.loc[cluster_id, col]
             if feature != "-":
-                st.write(f"• {feature}")
-                # Add glossary explanation if available
                 feature_name = feature.split(" (")[0]
                 if feature_name in glossary_dict:
-                    with st.expander(f"ℹ️ {feature_name}"):
+                    with st.expander(f"ℹ️ {feature}"):
                         st.write(glossary_dict[feature_name])
-    
+    st.markdown("---")
     # Display scouting report
-    st.subheader("🎯 Scouting Report")
-    st.info(df_cluster_profile.loc[cluster_id, "scouting_report"])
+    col1, col2 = st.columns(2)
     
-    # Display position distribution in cluster
+    with col2:
+        st.subheader("🎯 Scouting Report")
+        st.info(df_cluster_profile.loc[cluster_id, "scouting_report"])
+    
+    with col1:
+        st.subheader("📈 League Distribution")
+        st.plotly_chart(
+            plot_cluster_league(cluster_id, df_clusters),
+            width='stretch'
+    )
+    
+    st.markdown("---")
+    
+    # Display position distribution in cluster - side by side with plot
     st.subheader("📍 Position Distribution")
-    pos_counts = cluster_data['pos'].value_counts().reset_index()
-    pos_counts.columns = ['Position', 'Count']
-    pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
-    st.dataframe(pos_counts, use_container_width=True, hide_index=True)
+    pos_cols = st.columns(2)
+    with pos_cols[0]:
+        # Plot
+        fig = plot_cluster_positions(cluster_id, df_clusters)
+        st.plotly_chart(fig, use_container_width=True)
     
-    # Display anomalies (players not matching dominant position)
-    if len(cluster_data[cluster_data['pos'] != dominant_pos]) > 0:
-        st.subheader("⚠️ Tactical Anomalies")
-        anomalies = cluster_data[cluster_data['pos'] != dominant_pos][
-            ['player', 'pos', 'team', 'season', 'league']
-        ].sort_values(['pos', 'player'])
-        st.dataframe(anomalies, use_container_width=True, hide_index=True)
-    else:
-        st.info(f"✅ No anomalies found in this cluster. All {len(cluster_data)} players are {dominant_pos}s.")
+    with pos_cols[1]:
+        # Table
+        pos_counts = cluster_data['pos'].value_counts().reset_index()
+        pos_counts.columns = ['Position', 'Count']
+        pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
+        st.dataframe(pos_counts, use_container_width=True, hide_index=True)
