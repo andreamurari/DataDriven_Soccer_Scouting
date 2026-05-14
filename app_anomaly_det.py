@@ -164,6 +164,8 @@ def main():
                 margin=dict(l=0, r=0, t=50, b=0)
             )
             
+            fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
+            
             st.plotly_chart(fig, width='stretch')
             st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
             
