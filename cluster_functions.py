@@ -118,7 +118,7 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict, 
     feature_cols = st.columns(2)
     
     with feature_cols[0]:
-        st.write("**Positive Features (Strengths):**")
+        st.write("**Top Positive Features:**")
         for col in ['top_pos_1', 'top_pos_2', 'top_pos_3']:
             feature = df_cluster_profile.loc[cluster_id, col]
             if feature != "-":
@@ -128,7 +128,7 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict, 
                         st.write(glossary_dict[feature_name])
     
     with feature_cols[1]:
-        st.write("**Negative Features (Weaknesses):**")
+        st.write("**Top Negative Features:**")
         for col in ['top_neg_1', 'top_neg_2', 'top_neg_3']:
             feature = df_cluster_profile.loc[cluster_id, col]
             if feature != "-":
