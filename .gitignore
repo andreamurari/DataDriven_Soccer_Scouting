@@ -9,4 +9,15 @@ sites/site*/public/theme/
 textpattern/
 HISTORY.txt
 Outline_Progetto.gdoc
+# Ambiente virtuale
+.venv/
+venv/
+env/
+
+# Notebook e Python
+.ipynb_checkpoints/
+__pycache__/
+*.py[cod]
+
+
 
