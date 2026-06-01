@@ -13,11 +13,10 @@ def load_databases():
     # Loading the directly saved CSV files
     df_a = pd.read_csv('saved_models/database_dna_a.csv')
     df_b = pd.read_csv('saved_models/database_dna_b.csv')
-    df_c = pd.read_csv('saved_models/database_dna_c.csv')
     data = pd.read_csv('merged_data.csv')
-    return df_a, df_b, df_c, data
+    return df_a, df_b, data
 
-df_latente_a, df_latente_b, df_latente_c, data = load_databases()
+df_latente_a, df_latente_b, data = load_databases()
 
 colonne_ae = [f'AE_{i+1}' for i in range(10)]
 
@@ -57,13 +56,11 @@ def search_similar_players(player_name, player_season, top_n, max_age, season_fi
     # Average cosine similarity from the three latent spaces
     vettore_a = df_latente_a.loc[idx, colonne_ae].values.reshape(1, -1)
     vettore_b = df_latente_b.loc[idx, colonne_ae].values.reshape(1, -1)
-    vettore_c = df_latente_c.loc[idx, colonne_ae].values.reshape(1, -1)
     
     sim_a = cosine_similarity(vettore_a, df_latente_a[colonne_ae].values)[0]
     sim_b = cosine_similarity(vettore_b, df_latente_b[colonne_ae].values)[0]
-    sim_c = cosine_similarity(vettore_c, df_latente_c[colonne_ae].values)[0]
     
-    sim_ensemble = (sim_a + sim_b + sim_c) / 3
+    sim_ensemble = (sim_a + sim_b) / 2
 
     # Apply similarities to the dataframe
     df_temp = df_latente_a.copy()
