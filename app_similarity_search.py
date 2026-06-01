@@ -30,7 +30,7 @@ player_to_seasons = (
 )
 
 # --- 3. SEARCH ENGINE FUNCTION ---
-def search_similar_players(player_name, player_season, top_n, max_age, season_filter, same_position, same_league, preferred_foot_filter):
+def search_similar_players(player_name, player_season, top_n, max_age, season_filter, same_macro_position, same_league, preferred_foot_filter):
     # Find the target player
     mask_target = (
         (df_latente_a['player'].str.lower() == player_name.lower())
@@ -48,7 +48,7 @@ def search_similar_players(player_name, player_season, top_n, max_age, season_fi
         'player': df_latente_a.loc[idx, 'player'],
         'team': df_latente_a.loc[idx, 'team'],
         'season': df_latente_a.loc[idx, 'season'],
-        'pos': df_latente_a.loc[idx, 'pos'],
+        'macro_pos': df_latente_a.loc[idx, 'macro_pos'],
         'league': df_latente_a.loc[idx, 'league'],
         'preferred_foot': df_latente_a.loc[idx, 'preferred_foot']
     }
@@ -74,8 +74,8 @@ def search_similar_players(player_name, player_season, top_n, max_age, season_fi
     if season_filter is not None and season_filter != "All":
         df_temp = df_temp[df_temp['season'] == season_filter]
 
-    if same_position:
-        df_temp = df_temp[df_temp['pos'] == target_info['pos']]
+    if same_macro_position:
+        df_temp = df_temp[df_temp['macro_pos'] == target_info['macro_pos']]
 
     if same_league:
         df_temp = df_temp[df_temp['league'] == target_info['league']]
@@ -92,7 +92,7 @@ def search_similar_players(player_name, player_season, top_n, max_age, season_fi
     simili = df_temp.sort_values(by='Similarity_Score', ascending=False).head(top_n).copy()
     simili['Match %'] = (simili['Similarity_Score'] * 100).round(1).astype(str) + '%'
 
-    return target_info, simili[['player', 'age', 'team', 'pos', 'league', 'preferred_foot', 'season', 'Match %']]
+    return target_info, simili[['player', 'age', 'team', 'macro_pos', 'league', 'preferred_foot', 'season', 'Match %']]
 
 # --- 4. USER INTERFACE (SIDEBAR) ---
 with st.sidebar:
