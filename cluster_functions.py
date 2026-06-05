@@ -5,6 +5,13 @@ import matplotlib.pyplot as plt
 import streamlit as st
 
 
+
+# ============================================
+# ============================================
+# K-means Clustering Analysis Functions
+# ============================================
+# ============================================
+
 def plot_cluster_positions(cluster_id, df_clusters):
     """
     Create a bar plot showing the distribution of positions in a specific cluster
@@ -167,3 +174,156 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict, 
         pos_counts.columns = ['Position', 'Count']
         pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
         st.dataframe(pos_counts, use_container_width=True, hide_index=True)
+
+
+
+# ============================================
+# ============================================
+# AutoEncoder Clustering Analysis Functions
+# ============================================
+# ============================================
+
+
+def plot_anomalies_per_macropos(df_anomalies, df_merged, sort_by='Percentage'):
+    
+    macro_pos_order = ['CB', 'Fullback', 'CDM', 'CM', 'Wide Midfielder', 'CAM', 'Winger', 'ST']
+    
+    total_by_macropos = df_merged.groupby('macro_pos').size().reset_index(name='total_players')
+    
+    count_by_macropos = df_anomalies.groupby('macro_pos').agg(
+        count=('macro_pos', 'count'),
+        avg_anomaly_score=('robust_anomaly_score', 'mean')
+    ).reset_index()
+    
+    stats = pd.merge(count_by_macropos, total_by_macropos, on='macro_pos', how='left')
+    stats['percentage'] = (stats['count'] / stats['total_players']) * 100
+    stats['bar_text'] = stats.apply(lambda x: f"{x['percentage']:.1f}% ({int(x['count'])})", axis=1)
+    
+    if sort_by == 'Percentage':
+        stats = stats.sort_values('percentage', ascending=False)
+    elif sort_by == 'Count':
+        stats = stats.sort_values('count', ascending=False)
+        stats['bar_text'] = stats.apply(lambda x: f"{int(x['count'])} ({x['percentage']:.1f}%)", axis=1)
+
+    fig = px.bar(
+        stats,
+        x='macro_pos',
+        y='percentage',
+        color='avg_anomaly_score',
+        title='Anomalies by Macro-Position',
+        labels={
+            'count': 'Number of Anomalies', 
+            'macro_pos': 'Macro-Position',
+            'avg_anomaly_score': 'Avg Anomaly Score',
+            'percentage': '% of Total Position',
+            'total_players': 'Total Players in Position'
+        },
+        text='bar_text', 
+        color_continuous_scale='Blues',
+        hover_data={
+            'avg_anomaly_score': ':.2f', 
+            'percentage': ':.2f', 
+            'total_players': True,
+            'bar_text': False
+        }
+    )
+    
+    fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
+    
+    if sort_by == 'Macro-Position':
+        fig.update_layout(xaxis={'categoryorder':'array', 'categoryarray': macro_pos_order})
+    
+    fig.update_layout(title_x=0.5, xaxis_tickangle=-45)
+    
+    # MODIFICA STREAMLIT:
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def anomalies_per_league(df, macro_pos=None):
+    
+    league_colors = {
+        'ESP-La Liga': "#FF4B44",
+        'ENG-Premier League': '#04F5FF',
+        'GER-Bundesliga': "#777777",
+        'FRA-Ligue 1': '#CDFB0A',
+        'ITA-Serie A': '#0578FF'
+    }
+    
+    if macro_pos is not None:
+        df = df[df['macro_pos'] == macro_pos]
+    
+    count_by_league = df.groupby('league').agg(
+        count=('league', 'count'),
+        avg_anomaly_score=('robust_anomaly_score', 'mean')
+    ).reset_index().sort_values('count', ascending=False)
+    
+    fig = px.bar(
+        count_by_league,
+        x='league',
+        y='count',
+        color='league',
+        title='Anomalies by League',
+        labels={'count': 'Number of Anomalies', 'league': 'League'},
+        text='count',
+        color_discrete_map=league_colors,
+        hover_data={'avg_anomaly_score': ':.2f'}
+    )
+    
+    fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
+    fig.update_layout(title_x=0.5, xaxis_tickangle=-45)
+    
+    # MODIFICA STREAMLIT:
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def anomalies_per_age(df, macro_pos=None):
+    
+    if macro_pos is not None:
+        df = df[df['macro_pos'] == macro_pos]
+    
+    count_by_age = df.groupby('born').agg(
+        count=('born', 'count'),
+        avg_anomaly_score=('robust_anomaly_score', 'mean')
+    ).reset_index().sort_values('born')
+    
+    fig = px.bar(
+        count_by_age,
+        x='born',
+        y='count',
+        color='avg_anomaly_score',
+        title='Anomalies by Age',
+        labels={'count': 'Number of Anomalies', 'born': 'Birth Year'},
+        text='count',
+        color_continuous_scale='Greens',
+        hover_data={'avg_anomaly_score': ':.2f'}
+    )
+    
+    fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
+    fig.update_layout(title_x=0.5)
+    
+    # MODIFICA STREAMLIT:
+    st.plotly_chart(fig, use_container_width=True)
+
+
+def display_single_anomaly_pct(df_anomalies, df_merged, macro_pos):
+    """
+    Mostra la percentuale di anomalie per una singola macro-posizione.
+    """
+    anomalies_filtered = df_anomalies[df_anomalies['macro_pos'] == macro_pos]
+    merged_filtered = df_merged[df_merged['macro_pos'] == macro_pos]
+    
+    total_anomalies = len(anomalies_filtered)
+    total_players = len(merged_filtered)
+    
+    if total_players == 0:
+        st.warning(f"Nessun dato trovato per la posizione: {macro_pos}")
+        return
+        
+    pct = (total_anomalies / total_players) * 100
+    
+    st.metric(
+        label=f"Anomalie: {macro_pos}", 
+        value=f"{pct:.1f}%",
+        delta=f"{total_anomalies} giocatori", # OPZIONALE: Sfruttiamo il delta per mostrare il numero assoluto
+        delta_color="off" # Spegniamo il colore verde/rosso del delta perché qui è solo informativo
+    )
