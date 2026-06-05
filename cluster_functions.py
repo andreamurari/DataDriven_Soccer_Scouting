@@ -402,6 +402,7 @@ def display_anomaly_scouting_report(df_anomalies, df_glossary, macro_pos=None):
     
     df_display = pd.DataFrame({
         'Player': df_filtered['player'],
+        'Season': df_filtered['season'],
         'Team': df_filtered['team'],
         'League': df_filtered['league'],
         'Age': df_filtered['age'],
@@ -426,15 +427,15 @@ def display_anomaly_scouting_report(df_anomalies, df_glossary, macro_pos=None):
     # PHASE 2: THE SCOUTING CARD (Detail)
     # ==========================================
     st.markdown("### 🔍 Tactical Profile Explorer")
-    
+    df_filtered ['key'] = df_filtered['player'] +  " (" + df_filtered['season'].astype(str) + ")"
     selected_player = st.selectbox(
         "Select a player for the Deep Dive:",
-        options=df_filtered['player'].tolist()
+        options=df_filtered['key'].tolist()
     )
     
     if selected_player:
         # Extract the specific player's data
-        player_data = df_filtered[df_filtered['player'] == selected_player].iloc[0]
+        player_data = df_filtered[df_filtered['key'] == selected_player].iloc[0]
         
         st.subheader(f"👤 {player_data['player']} ({player_data['age']} yrs) - {player_data['team']}")
         
