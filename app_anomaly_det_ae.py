@@ -43,25 +43,36 @@ def main():
     st.sidebar.header("Navigation")
     page = st.sidebar.radio("Select Section", ["Overview", "Deep Anomaly Hub"])
     
-    # ========================================================================
+# ========================================================================
     # PAGE 1: OVERVIEW
     # ========================================================================
     if page == "Overview":
         st.header("Deep Autoencoder Overview")
         
+        # Inserimento del Goal del progetto
+        # Inserimento del Goal del progetto espanso
+        st.info("""
+        **🎯 Task Goal: Uncovering Tactical Innovators through Deep Learning**
+        
+        The primary objective of this advanced model is to move beyond traditional statistics by leveraging neural networks to automate the discovery of unique playing profiles. Specifically, this tool is designed to:
+        
+        * **Define the Standard (Tactical DNA):** Compress over 100 performance and physical metrics to learn the quintessential baseline profile for every macro-position across Europe.
+        * **Detect Structural Anomalies:** Identify players whose playing style fundamentally breaks the traditional rules of their nominal role. We are not just looking for the *best* players, but for true *tactical outliers*—for example, a center-back who orchestrates play like a deep-lying playmaker, or a fullback with the attacking footprint of a winger.
+        * **Drive Actionable Scouting:** Translate complex multidimensional mathematics (latent space deviations) into highly readable, real-world percentiles. This empowers sporting directors and analysts to discover unpredictable game-changers, tactical innovators, and highly versatile hybrid profiles that opponents struggle to counter.
+        """)
         with st.expander("🧩 What is an Autoencoder for Anomaly Detection?", expanded=False):
             st.markdown("""
             An **Autoencoder** is a type of Feedforward Neural Network designed to learn a compressed representation of data. 
-            We use it here to define the "standard tactical DNA" of a position and spot those players who break the mold.
+            We use it here to define the "standard tactical DNA" of a player and spot those who break the mold.
             
             ### How It Works:
-            1. **Encoder (Compression)**: The network takes a player's full statistical profile (~100 features) and compresses it through hidden layers into a small "bottleneck" layer (down to 4-8 dimensions).
+            1. **Encoder (Compression)**: The network takes a player's full statistical profile (~115 features) and compresses it through hidden layers into a small "bottleneck" layer (down to 4-8 dimensions).
             2. **Bottleneck (Latent Space)**: This is the core "DNA". To fit the data here, the model is forced to learn the most important, non-linear relationships between stats (e.g., how high possession correlates with passing accuracy).
-            3. **Decoder (Reconstruction)**: The network attempts to rebuild the original 100 features from the compressed bottleneck.
-            4. **The Catch (Anomaly Detection)**: The model is trained to minimize the **Reconstruction Error** for the average player. If a player is a tactical anomaly (e.g., a CB with playmaker stats), the model won't know how to reconstruct their profile from the bottleneck. Their reconstruction error will spike, flagging them as an outlier.
+            3. **Decoder (Reconstruction)**: The network attempts to rebuild the original 115 features from the compressed bottleneck.
+            4. **The Catch (Anomaly Detection)**: The model is trained to minimize the **Reconstruction Error** for the average player. If a player is a tactical anomaly (e.g., a CB with playmaker stats), the model won't know how to reconstruct their profile from the bottleneck. Their reconstruction error will spike, flagging them as an outlier!
             """)
         
-        with st.expander("🛠️ How We Built The Model", expanded=False):
+        with st.expander("🛠️ How We Built This Advanced Model", expanded=False):
             st.markdown("""
             ### Data Preparation:
             - **Position-Specific Isolation**: We train a *separate* autoencoder for each macro-position (e.g., Wingers, Center Backs). This prevents the model from flagging a Winger as an anomaly just because they don't defend like a Center Back.
@@ -95,7 +106,7 @@ def main():
     # PAGE 2: DEEP ANOMALY HUB
     # ========================================================================
     elif page == "Cluster Explorer":
-        
+        st.header("Deep Anomaly Hub")
 
 if __name__ == "__main__":
     main()
