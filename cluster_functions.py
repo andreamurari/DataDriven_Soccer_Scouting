@@ -233,13 +233,13 @@ def plot_anomalies_per_macropos(df_anomalies, df_merged, sort_by='Percentage'):
     if sort_by == 'Macro-Position':
         fig.update_layout(xaxis={'categoryorder':'array', 'categoryarray': macro_pos_order})
     
-    fig.update_layout(title_x=0.5, xaxis_tickangle=-45)
+    fig.update_layout(title_x=0, xaxis_tickangle=-45)
     
     # MODIFICA STREAMLIT:
     st.plotly_chart(fig, use_container_width=True)
 
 
-def anomalies_per_league(df, macro_pos=None):
+def plot_anomalies_per_league(df_anomalies, df_merged, macro_pos=None):
     
     league_colors = {
         'ESP-La Liga': "#FF4B44",
@@ -250,80 +250,236 @@ def anomalies_per_league(df, macro_pos=None):
     }
     
     if macro_pos is not None:
-        df = df[df['macro_pos'] == macro_pos]
+        df_anomalies = df_anomalies[df_anomalies['macro_pos'] == macro_pos]
+        df_merged = df_merged[df_merged['macro_pos'] == macro_pos]
+        
+    total_by_league = df_merged.groupby('league').size().reset_index(name='total_players')
     
-    count_by_league = df.groupby('league').agg(
+    count_by_league = df_anomalies.groupby('league').agg(
         count=('league', 'count'),
         avg_anomaly_score=('robust_anomaly_score', 'mean')
-    ).reset_index().sort_values('count', ascending=False)
+    ).reset_index()
+    
+    stats = pd.merge(count_by_league, total_by_league, on='league', how='left')
+    stats['percentage'] = (stats['count'] / stats['total_players']) * 100
+    
+    stats = stats.sort_values('percentage', ascending=False)
+    
+    stats['bar_text'] = stats.apply(lambda x: f"{x['percentage']:.1f}% ({int(x['count'])})", axis=1)
     
     fig = px.bar(
-        count_by_league,
+        stats,
         x='league',
-        y='count',
+        y='percentage', 
         color='league',
         title='Anomalies by League',
-        labels={'count': 'Number of Anomalies', 'league': 'League'},
-        text='count',
+        labels={
+            'count': 'Number of Anomalies', 
+            'league': 'League',
+            'percentage': '% of Anomalies in League',
+            'avg_anomaly_score': 'Avg Anomaly Score',
+            'total_players': 'Total Players'
+        },
+        text='bar_text',
         color_discrete_map=league_colors,
-        hover_data={'avg_anomaly_score': ':.2f'}
+        hover_data={
+            'avg_anomaly_score': ':.2f',
+            'count': True,
+            'total_players': True,
+            'percentage': ':.2f',
+            'league': False, 
+            'bar_text': False
+        }
     )
     
     fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
-    fig.update_layout(title_x=0.5, xaxis_tickangle=-45)
+    fig.update_layout(title_x=0, xaxis_tickangle=-45)
     
-    # MODIFICA STREAMLIT:
     st.plotly_chart(fig, use_container_width=True)
 
 
-def anomalies_per_age(df, macro_pos=None):
+def plot_anomalies_per_age(df_anomalies, df_merged, macro_pos=None):
     
     if macro_pos is not None:
-        df = df[df['macro_pos'] == macro_pos]
+        df_anomalies = df_anomalies[df_anomalies['macro_pos'] == macro_pos]
+        df_merged = df_merged[df_merged['macro_pos'] == macro_pos]
+        
+    total_by_age = df_merged.groupby('born').size().reset_index(name='total_players')
     
-    count_by_age = df.groupby('born').agg(
+    count_by_age = df_anomalies.groupby('born').agg(
         count=('born', 'count'),
         avg_anomaly_score=('robust_anomaly_score', 'mean')
-    ).reset_index().sort_values('born')
+    ).reset_index()
+    
+    stats = pd.merge(count_by_age, total_by_age, on='born', how='left')
+    stats['percentage'] = (stats['count'] / stats['total_players']) * 100
+    
+    stats = stats.sort_values('born')
+    
+    stats['bar_text'] = stats.apply(lambda x: f"{x['percentage']:.1f}% ({int(x['count'])})", axis=1)
     
     fig = px.bar(
-        count_by_age,
+        stats,
         x='born',
-        y='count',
+        y='percentage', 
         color='avg_anomaly_score',
         title='Anomalies by Age',
-        labels={'count': 'Number of Anomalies', 'born': 'Birth Year'},
-        text='count',
+        labels={
+            'count': 'Number of Anomalies', 
+            'born': 'Birth Year',
+            'percentage': '% of Players in Age Cohort',
+            'total_players': 'Total Players',
+            'avg_anomaly_score': 'Avg Anomaly Score'
+        },
+        text='bar_text',
         color_continuous_scale='Greens',
-        hover_data={'avg_anomaly_score': ':.2f'}
+        hover_data={
+            'avg_anomaly_score': ':.2f',
+            'count': True,
+            'total_players': True,
+            'percentage': ':.2f',
+            'bar_text': False
+        }
     )
     
     fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
-    fig.update_layout(title_x=0.5)
+    fig.update_layout(xaxis_tickangle=-45)
     
-    # MODIFICA STREAMLIT:
+    fig.update_layout(
+        title_x=0, 
+        xaxis=dict(type='category') 
+    )
+    
     st.plotly_chart(fig, use_container_width=True)
 
+import streamlit as st
 
-def display_single_anomaly_pct(df_anomalies, df_merged, macro_pos):
-    """
-    Mostra la percentuale di anomalie per una singola macro-posizione.
-    """
-    anomalies_filtered = df_anomalies[df_anomalies['macro_pos'] == macro_pos]
-    merged_filtered = df_merged[df_merged['macro_pos'] == macro_pos]
-    
-    total_anomalies = len(anomalies_filtered)
-    total_players = len(merged_filtered)
+def display_single_anomaly_pct(df_anomalies, df_merged, macro_pos=None):
+    if macro_pos is None:
+        total_anomalies = len(df_anomalies)
+        total_players = len(df_merged)
+        label_text = "Percentage of anomalies found:"
+    else:
+        anomalies_filtered = df_anomalies[df_anomalies['macro_pos'] == macro_pos]
+        merged_filtered = df_merged[df_merged['macro_pos'] == macro_pos]
+        
+        total_anomalies = len(anomalies_filtered)
+        total_players = len(merged_filtered)
+        label_text = f"Anomalies found for {macro_pos}:"
     
     if total_players == 0:
-        st.warning(f"Nessun dato trovato per la posizione: {macro_pos}")
+        st.warning(f"No data found for position: {macro_pos}")
         return
         
     pct = (total_anomalies / total_players) * 100
     
     st.metric(
-        label=f"Anomalie: {macro_pos}", 
+        label=label_text, 
         value=f"{pct:.1f}%",
-        delta=f"{total_anomalies} giocatori", # OPZIONALE: Sfruttiamo il delta per mostrare il numero assoluto
-        delta_color="off" # Spegniamo il colore verde/rosso del delta perché qui è solo informativo
+        delta=f"{total_anomalies} / {total_players} players",
+        delta_color="off"
     )
+def display_anomaly_scouting_report(df_anomalies, df_glossary, macro_pos=None):
+    st.markdown("### 📋 Scouting Roster & Player Deep Dive")
+    
+    # 1. Filter the dataset based on selection
+    if macro_pos is not None and macro_pos != "All Positions":
+        df_filtered = df_anomalies[df_anomalies['macro_pos'] == macro_pos].copy()
+    else:
+        df_filtered = df_anomalies.copy()
+        
+    if df_filtered.empty:
+        st.info(f"No anomalous players found for position: {macro_pos}")
+        return
+        
+    # Sort by the most extreme anomalies first
+    df_filtered = df_filtered.sort_values('robust_anomaly_score', ascending=False)
+    
+    # ==========================================
+    # PHASE 1: THE "MASTER" TABLE (Ultra-clean)
+    # ==========================================
+    st.markdown("Select a profile from the table below to open their analytical card.")
+    
+    df_display = pd.DataFrame({
+        'Player': df_filtered['player'],
+        'Team': df_filtered['team'],
+        'League': df_filtered['league'],
+        'Age': df_filtered['age'],
+        'Score': df_filtered['robust_anomaly_score'],
+        'Main Positive Deviation': df_filtered['Top_Pos_Feat_1'], 
+        'Main Negative Deviation': df_filtered['Top_Neg_Feat_1']   
+    })
+    
+    st.dataframe(
+        df_display,
+        use_container_width=True,
+        hide_index=True,
+        column_config={
+            "Score": st.column_config.NumberColumn("Anomaly Score", format="%.1f"),
+            "Age": st.column_config.NumberColumn("Age", format="%d")
+        }
+    )
+    
+    st.markdown("---")
+    
+    # ==========================================
+    # PHASE 2: THE SCOUTING CARD (Detail)
+    # ==========================================
+    st.markdown("### 🔍 Tactical Profile Explorer")
+    
+    selected_player = st.selectbox(
+        "Select a player for the Deep Dive:",
+        options=df_filtered['player'].tolist()
+    )
+    
+    if selected_player:
+        # Extract the specific player's data
+        player_data = df_filtered[df_filtered['player'] == selected_player].iloc[0]
+        
+        st.subheader(f"👤 {player_data['player']} ({player_data['age']} yrs) - {player_data['team']}")
+        
+        # Build the Glossary Dictionary FIRST so we can use it inside the loop
+        try:
+            glossary_dict = dict(zip(df_glossary['KPI'], df_glossary['Explanation']))
+        except KeyError:
+            st.error("Error: Could not find 'KPI' or 'Explanation' columns in the glossary file.")
+            glossary_dict = {}
+
+        # Create exactly 2 columns for a balanced layout
+        col_pos, col_neg = st.columns(2)
+        
+        with col_pos:
+            st.success("📈 Over-Performing Traits")
+            for i in range(1, 4):
+                feat = player_data[f'Top_Pos_Feat_{i}']
+                pctl = player_data[f'Top_Pos_Pctl_{i}']
+                delta = player_data[f'Top_Pos_Delta_{i}']
+                
+                # Retrieve the definition from the dictionary
+                trait_definition = glossary_dict.get(feat, "Definition not available.")
+                
+                st.metric(
+                    label=feat,
+                    value=f"{pctl}th Pctl",
+                    delta=f"+{delta} vs Avg",
+                    delta_color="normal",
+                    help=trait_definition # <--- UX MAGIC: This creates the hover tooltip!
+                )
+                
+        with col_neg:
+            st.error("📉 Under-Performing Traits")
+            for i in range(1, 4):
+                feat = player_data[f'Top_Neg_Feat_{i}']
+                pctl = player_data[f'Top_Neg_Pctl_{i}']
+                delta = player_data[f'Top_Neg_Delta_{i}']
+                
+                # Retrieve the definition from the dictionary
+                trait_definition = glossary_dict.get(feat, "Definition not available.")
+                
+                st.metric(
+                    label=feat,
+                    value=f"{pctl}th Pctl",
+                    delta=f"{delta} vs Avg", 
+                    delta_color="normal",
+                    help=trait_definition # <--- UX MAGIC: This creates the hover tooltip!
+                )

@@ -3,6 +3,14 @@ import pandas as pd
 import plotly.express as px
 import warnings
 warnings.filterwarnings("ignore")
+from cluster_functions import (
+    display_anomaly_scouting_report,
+    plot_anomalies_per_league,
+    plot_anomalies_per_age,
+    display_single_anomaly_pct,
+    plot_anomalies_per_macropos
+)
+
 
 # ============================================================================
 # PAGE CONFIGURATION
@@ -23,12 +31,26 @@ def load_data():
     # Ensure you have saved df_final_anomalies as a CSV from your notebook!
     try:
         df_anomalies = pd.read_csv("resources/anomalies_per_pos_AE.csv")
+        df_merged = pd.read_csv("merged_data.csv")
+        df_glossary = pd.read_excel("resources/glossary.xlsx")
+        pos_mapping = {
+            'RB': 'Fullback',
+            'LB': 'Fullback',
+            'RW': 'Winger',
+            'LW': 'Winger',
+            'RM': 'Wide Midfielder',
+            'LM': 'Wide Midfielder'
+        }
+        df_merged['macro_pos'] = df_merged['Position'].replace(pos_mapping)
+
     except FileNotFoundError:
         # Temporary mockup in case the file doesn't exist yet
         st.error("File 'anomalies_per_pos_AE.csv' not found. Make sure to export the data from your Notebook.")
         df_anomalies = pd.DataFrame()
+        df_merged = pd.DataFrame()
+        df_glossary = pd.DataFrame()
     
-    return df_anomalies
+    return df_anomalies, df_merged, df_glossary
 
 # ============================================================================
 # MAIN APP
@@ -37,20 +59,19 @@ def main():
     st.title("🤖 Deep Player Embeddings - Anomaly Detection")
     
     # Load data
-    df_anomalies = load_data()
+    df_anomalies, df_merged, df_glossary = load_data()
+
     
     # Sidebar navigation
     st.sidebar.header("Navigation")
     page = st.sidebar.radio("Select Section", ["Overview", "Deep Anomaly Hub"])
     
-# ========================================================================
+    # ========================================================================
     # PAGE 1: OVERVIEW
     # ========================================================================
     if page == "Overview":
         st.header("Deep Autoencoder Overview")
         
-        # Inserimento del Goal del progetto
-        # Inserimento del Goal del progetto espanso
         st.info("""
         **🎯 Task Goal: Uncovering Tactical Innovators through Deep Learning**
         
@@ -101,12 +122,107 @@ def main():
             - **Top Positive Deviations (📈)**: The raw stats where the player vastly exceeds what is expected for their specific role.
             - **Top Negative Deviations (📉)**: The typical positional traits this player completely ignores.
             """)
+
+        with st.expander("🔍 Major Insights", expanded=False):
             
-    # ========================================================================
+            display_single_anomaly_pct(df_anomalies, df_merged)                        
+            
+            st.markdown("✅ **Model Sanity Check:** This low percentage confirms the Autoencoder is highly calibrated. We are successfully filtering out the noise and isolating only the true tactical outliers.")
+            
+            st.markdown('---')
+            
+            st.markdown("""
+            ### 🧠 Positional DNA: The Innovation Hub
+            * **Midfield (CM, CAM, Wide):** The ultimate tactical laboratory. CMs have the highest frequency (14.8%), while Wide Midfielders show the most extreme deviations (darkest blue). 
+            * **Modern Fullbacks (11.7%):** The purely defensive fullback is obsolete. They now regularly operate as inverted playmakers or auxiliary wingers.
+            * **Rigid Defense (CB 3.4%, CDM 8.3%):** Tactical experimentation here carries catastrophic risk. Coaches demand strictly traditional profiles.
+            """)
+            plot_anomalies_per_macropos(df_anomalies, df_merged)
+        
+            st.markdown("---")
+        
+            st.markdown("""
+            ### 🌍 Leagues: Fluidity vs. Discipline
+            * **Premier League (9.1%):** The leader in dynamic, transition-heavy hybrid roles.
+            * **Bundesliga (8.1%):** High-intensity systems requiring extreme out-of-position versatility.
+            * **Serie A & La Liga (~7%):** Mid-table. Strong adherence to historical, disciplined positional play.
+            * **Ligue 1 (5.4%):** The most rigid environment, relying heavily on standard athletic profiles over tactical fluidity.
+            """)
+            plot_anomalies_per_league(df_anomalies, df_merged)
+            
+            st.markdown("---")
+            
+            st.markdown("""
+            ### ⏳ Age Curve: Potential vs. Reinvention
+            * ⚠️ **The Youth Illusion (U-20):** Extreme anomaly scores, but tiny sample sizes. Often a statistical trap due to low minutes played or highly protected tactical deployment.
+            * 🛡️ **Prime Baseline (23-28):** The standard. These players execute traditional roles reliably, creating the lowest anomaly rates.
+            * 🧠 **Veteran Reinvention (30+):** A true tactical shift. High-IQ players successfully adapting their roles (e.g., explosive winger to deep playmaker) to survive physical decline.
+            """)
+            plot_anomalies_per_age(df_anomalies, df_merged)
+
+# ========================================================================
     # PAGE 2: DEEP ANOMALY HUB
     # ========================================================================
-    elif page == "Cluster Explorer":
-        st.header("Deep Anomaly Hub")
-
+    elif page == "Deep Anomaly Hub":
+        st.header("🔎 Deep Anomaly Hub: Tactical Explorer")
+        
+        st.markdown("""
+        Use the filters below to isolate specific tactical roles, leagues, or age cohorts. 
+        The algorithms will dynamically recalculate anomaly frequencies and distributions based on your selection.
+        """)
+        
+        col_pos, col_league, col_age, col_kpi = st.columns([2, 2, 2, 3])
+        
+        with col_pos:
+            macro_pos_order = ['CB', 'Fullback', 'CDM', 'CM', 'Wide Midfielder', 'CAM', 'Winger', 'ST']
+            selected_pos = st.selectbox("🎯 Macro-Position", ["All Positions"] + macro_pos_order)
+            
+        with col_league:
+            leagues = sorted(df_merged['league'].dropna().unique())
+            selected_league = st.selectbox("🌍 League", ["All Leagues"] + leagues)
+            
+        with col_age:
+            # Assicuriamoci che l'anno sia un numero intero per evitare i ".0" nella tendina
+            ages = sorted(df_merged['born'].dropna().astype(int).unique())
+            selected_age = st.selectbox("⏳ Birth Year", ["All Years"] + ages)
+            
+        # =========================================================
+        # 2. IL MOTORE DI FILTRAGGIO (Master Filter)
+        # =========================================================
+        df_anomalies_filtered = df_anomalies.copy()
+        df_merged_filtered = df_merged.copy()
+        
+        # Applichiamo il filtro Lega se necessario
+        if selected_league != "All Leagues":
+            df_anomalies_filtered = df_anomalies_filtered[df_anomalies_filtered['league'] == selected_league]
+            df_merged_filtered = df_merged_filtered[df_merged_filtered['league'] == selected_league]
+            
+        # Applichiamo il filtro Età se necessario
+        if selected_age != "All Years":
+            df_anomalies_filtered = df_anomalies_filtered[df_anomalies_filtered['born'] == selected_age]
+            df_merged_filtered = df_merged_filtered[df_merged_filtered['born'] == selected_age]
+            
+        # Gestiamo il ruolo per passarlo come parametro (sfruttando la logica già presente nelle tue funzioni)
+        filtro_pos = None if selected_pos == "All Positions" else selected_pos
+        
+        # =========================================================
+        # 3. RENDER DEI GRAFICI CON I DATI FILTRATI
+        # =========================================================
+        with col_kpi:
+            display_single_anomaly_pct(df_anomalies_filtered, df_merged_filtered, macro_pos=filtro_pos)
+            
+        st.markdown("---")
+        
+        if selected_pos == "All Positions":
+            plot_anomalies_per_macropos(df_anomalies_filtered, df_merged_filtered)
+            st.markdown("---")
+        
+        plot_anomalies_per_league(df_anomalies_filtered, df_merged_filtered, macro_pos=filtro_pos)
+        plot_anomalies_per_age(df_anomalies_filtered, df_merged_filtered, macro_pos=filtro_pos)
+            
+        # Tabella di scouting finale
+        st.markdown("---")
+        display_anomaly_scouting_report(df_anomalies_filtered, df_glossary, macro_pos=filtro_pos)
+            
 if __name__ == "__main__":
     main()
