@@ -175,7 +175,7 @@ with tab_overview:
                 st.info("Dataset details will be available once data is loaded.")
         
         # 2. PCA (IL PUNTO DI PARTENZA)
-        with st.expander("📊 1. Baseline Model: Principal Component Analysis"):
+        with st.expander("📊 Baseline Model: Principal Component Analysis"):
             st.markdown("""
         *Our starting point: summarizing a player's game without losing the big picture.*
         
@@ -189,7 +189,7 @@ with tab_overview:
             """)
 
         # 3. AUTOENCODER (L'EVOLUZIONE)
-        with st.expander("🧠 2. Advanced Model: Deep Autoencoder"):
+        with st.expander("🧠 Advanced Model: Deep Autoencoder"):
             st.markdown("""
         *The evolution: a neural compression machine designed to isolate pure tactical DNA and fix the PCA's positional blind spots.*
 

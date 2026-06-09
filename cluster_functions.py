@@ -437,7 +437,7 @@ def display_anomaly_scouting_report(df_anomalies, df_glossary, macro_pos=None):
         # Extract the specific player's data
         player_data = df_filtered[df_filtered['key'] == selected_player].iloc[0]
         
-        st.subheader(f"👤 {player_data['player']} ({player_data['age']} yrs) - {player_data['team']}")
+        st.subheader(f"👤 {player_data['player']} ({player_data['age']} yrs) - {player_data['macro_pos']} - {player_data['team']} ")
         
         # Build the Glossary Dictionary FIRST so we can use it inside the loop
         try:

@@ -17,7 +17,7 @@ from cluster_functions import (
 # ============================================================================
 st.set_page_config(
     page_title="Deep Scouting - Anomaly Detection",
-    page_icon="🤖",
+    page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -70,10 +70,10 @@ def main():
     # PAGE 1: OVERVIEW
     # ========================================================================
     if page == "Overview":
-        st.header("Deep Autoencoder Overview")
+        st.header("🎯 Task Goal")
         
-        st.info("""
-        **🎯 Task Goal: Uncovering Tactical Innovators through Deep Learning**
+        st.markdown("""
+        **Uncovering Tactical Innovators through Deep Learning**
         
         The primary objective of this advanced model is to move beyond traditional statistics by leveraging neural networks to automate the discovery of unique playing profiles. Specifically, this tool is designed to:
         
