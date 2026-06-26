@@ -70,7 +70,7 @@ def main():
     # PAGE 1: OVERVIEW
     # ========================================================================
     if page == "Overview":
-        st.header("🎯 Task Goal")
+        st.header("👽 The Anomaly Hunter")
         
         st.markdown("""
         **Uncovering Tactical Innovators through Deep Learning**
