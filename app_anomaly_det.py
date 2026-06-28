@@ -15,7 +15,7 @@ warnings.filterwarnings("ignore")
 # PAGE CONFIGURATION
 # ============================================================================
 st.set_page_config(
-    page_title="Soccer Scouting - Anomaly Detection",
+    page_title="Football Scouting - Anomaly Detection",
     page_icon="⚽",
     layout="wide",
     initial_sidebar_state="expanded"
@@ -51,7 +51,7 @@ def load_data():
 # ============================================================================
 
 def main():
-    st.title("⚽ Soccer Scouting - Anomaly Detection")
+    st.title("⚽ Football Scouting - Anomaly Detection")
     
     # Load data
     df_clusters, df_cluster_profile, glossary_dict = load_data()
@@ -69,7 +69,7 @@ def main():
         
         st.markdown("""
         **Discovering Tactical Aliens**
-        Modern soccer is overwhelmed by data. Our objective is to cut through the noise by analyzing over 90 physical and technical metrics to define the pure, mathematical **"tactical DNA"** of every role on the pitch. 
+        Modern football is overwhelmed by data. Our objective is to cut through the noise by analyzing over 90 physical and technical metrics to define the pure, mathematical **"tactical DNA"** of every role on the pitch. 
 
         By standardizing these profiles, we can look past rigid positional labels (like "CB" or "CM") to perform truly objective scouting. The result? We identify **tactical anomalies**—hybrid, unique players who defy traditional categorization and offer coaches revolutionary strategic solutions.
 

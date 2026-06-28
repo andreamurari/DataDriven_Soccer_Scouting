@@ -4,8 +4,8 @@ import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
 
 # --- 1. PAGE CONFIGURATION ---
-st.set_page_config(page_title="AI Soccer Scout", page_icon="⚽", layout="wide")
-st.title("⚽ Data-Driven Soccer Scouting")
+st.set_page_config(page_title="AI Football Scout", page_icon="⚽", layout="wide")
+st.title("⚽ Data-Driven Football Scouting")
 st.markdown("Unsupervised ML for tactical scouting. Mapping the *Tactical DNA* of elite players across Europe.")
 
 # --- 2. DATA LOADING (WITH CACHE) ---
@@ -143,7 +143,7 @@ with tab_overview:
         
         st.markdown("""
         **Uncovering "Hidden Gems"**
-        Modern soccer is overwhelmed by data. Our objective is to cut through the noise by compressing over 100 physical and technical metrics into a pure, mathematical **"tactical DNA"** for every player. 
+        Modern football is overwhelmed by data. Our objective is to cut through the noise by compressing over 100 physical and technical metrics into a pure, mathematical **"tactical DNA"** for every player. 
 
         By standardizing this data, we can look past market values and league reputations to perform truly objective scouting. The result? We identify undervalued talent—affordable players in developing leagues who perfectly replicate the playing style and statistical output of world-class superstars.
 
