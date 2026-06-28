@@ -201,8 +201,8 @@ with tab_overview:
 
         **The Winning Configuration:**
         After testing 4 different architectures (including ReLU and Dropout variations), we selected a **Pure Tanh without Dropout**. 
-        - **Why Tanh?** It captures complex relationships while maintaining negative values, ensuring strict positional boundaries.
-        - **Why no Dropout?** Removing dropout forces the 16-node bottleneck to learn an exact, unblurred signature, preventing "hallucinations" between similar roles.
+        - **Why Tanh?** It captures complex relationships while maintaining negative values.
+        - **Why no Dropout?** Removing dropout forces the 16-node bottleneck to learn an exact, unblurred signature, preventing model's hallucinations.
         - **Huber Loss:** Prevents extreme outliers (common in soccer stats) from distorting the network.
             """)
             
