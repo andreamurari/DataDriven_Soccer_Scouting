@@ -88,12 +88,6 @@ def main():
             2. **Assignment**: Each player is assigned to the nearest cluster. 
             3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
             4. **Iteration**: Repeat until convergence.
-            
-            ### Why K-Means for Soccer Scouting?
-            - **Tactical Profiling**: Players in the same cluster share similar playing styles, regardless of how much possession their team averages.
-            - **Anomaly Detection**: Identify players who don't fit their assigned position (e.g., a CB playing like a deep-lying playmaker).
-            - **Scouting Shortcuts**: Find similar players to targets across different leagues/teams.
-            - **Talent Benchmarking**: Compare player profiles to established tactical templates.
             """)
         
         with st.expander("🛠️ How We Built This Model", expanded=False):
