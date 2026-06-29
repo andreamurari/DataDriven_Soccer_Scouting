@@ -68,12 +68,12 @@ def main():
         st.header("👽 The Anomaly Hunter")
         
         st.markdown("""
-        **Discovering Tactical Aliens**
-        Modern football is overwhelmed by data. Our objective is to cut through the noise by analyzing over 90 physical and technical metrics to define the pure, mathematical **"tactical DNA"** of every role on the pitch. 
-
-        By standardizing these profiles, we can look past rigid positional labels (like "CB" or "CM") to perform truly objective scouting. The result? We identify **tactical anomalies**—hybrid, unique players who defy traditional categorization and offer coaches revolutionary strategic solutions.
-
-        **The Technical Goal:** Utilize Unsupervised Machine Learning (K-Means Clustering) to map the multidimensional landscape of European soccer and mathematically isolate players whose statistical footprint is objectively unique.
+        **Discovering Tactical Aliens**\n
+        Modern football scouting relies heavily on rigid positional labels. Our objective is to challenge these traditional definitions by using unsupervised machine learning to uncover players who break the mold and operate in a completely non-traditional way compared to their peers.
+        \n
+        By applying $K$-means clustering strictly to performance data, we group players based on how they play, rather than where they are deployed. We then analyze the position distribution within each cluster to isolate anomalies: players who end up in clusters dominated by an entirely different role (e.g., a striker grouped with central defenders).
+        
+        **The Technical Goal**: Identify statistical outliers by detecting minority positions within highly homogeneous clusters, mapping out players with unique, unconventional tactical behaviors.
         """)
         
         st.header("K-Means Clustering Overview")
