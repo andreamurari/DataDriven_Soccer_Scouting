@@ -85,7 +85,7 @@ def main():
             
             ### How It Works:
             1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids).
-            2. **Assignment**: Each player is assigned to the nearest cluster. *(Thanks to our normalization process, this distance effectively acts as Cosine Similarity, grouping players by the "angle" of their playstyle rather than sheer volume).*
+            2. **Assignment**: Each player is assigned to the nearest cluster. 
             3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
             4. **Iteration**: Repeat until convergence.
             
@@ -101,20 +101,17 @@ def main():
             ### Data Preparation:
             - **Removed Noisy Features**: Excluded playing time (`90s`, `Starts`) and penalty metrics (`PK`) to prevent the model from grouping players by "status" (starter vs. bench) instead of tactics.
             - **Standardization**: Scaled all features to mean=0, std=1 using `StandardScaler`.
-            - **L2 Normalization (The Secret Sauce)**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
-            - **Removed Goalkeepers**: Excluded GK (different statistical universe).
-            - **Removed Missing Values**: Only players with complete feature profiles were included.
+            - **L2 Normalization**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
             
             ### Model Parameters:
             - **Number of Clusters (k)**: 20 clusters (Optimized to isolate specific tactical micro-roles).
             - **Initialization**: 50 random seeds (`n_init=50`) to guarantee absolute mathematical stability.
-            - **Random State**: 42 for reproducibility.
             - **Metric**: Euclidean distance on L2-Normalized data (mathematically equivalent to **Cosine Similarity**).
             
             ### Cluster Profiles:
             Each cluster is characterized by its:
-            - **Top 3 Positive Features (📈)**: The extreme Z-scores showing what the cluster excels at compared to the European average.
-            - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster actively avoids doing.
+            - **Top 3 Positive Features (📈)**: The highest Z-scores showing what the cluster does **more** compared to the European average.
+            - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster does **less** compared to the European average.
             - **Dominant Role**: Most common nominal position in the cluster.
             - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
             """)
