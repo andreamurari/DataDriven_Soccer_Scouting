@@ -173,23 +173,6 @@ def main():
                 st.plotly_chart(fig, width='stretch')
                 st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
         
-        with st.expander("🔍 Cluster Profiles & Scouting Reports", expanded=False):
-        
-            clusters = sorted(df_cluster_profile['cluster'].unique())
-            cols_per_row = 4
-
-            for i in range(0, len(clusters), cols_per_row):
-                cols = st.columns(cols_per_row)
-                cluster_batch = clusters[i:i+cols_per_row]
-
-                for col, cluster_id in zip(cols, cluster_batch):
-                    with col:
-                        with st.container(border=True):
-                            st.markdown(f"**📋 Cluster {cluster_id}**")
-                            st.markdown(f"*{df_cluster_profile.loc[cluster_id, 'dominant_role']}*")
-                            st.divider()
-                            st.write(df_cluster_profile.loc[cluster_id, 'scouting_report'])
-        
         with st.expander("🔗 Tactical Similarity Matrix (Positions)", expanded=False):
             st.markdown("""
             This heatmap shows how **tactically similar** different positions are based on their **cluster distribution patterns**.
