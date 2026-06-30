@@ -111,67 +111,57 @@ def main():
             """)
         
         with st.expander("📊 Cluster Distribution & Position Analysis", expanded=False):
-            col1, col2 = st.columns([0.3, 0.7])
+            
+            st.subheader("Cluster Overview")
 
-            with col1:
-                st.subheader("Cluster Overview")
-                st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
-                cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
-                cluster_dist = cluster_dist.merge(
-                    df_cluster_profile[['cluster', 'dominant_role']],
-                    on='cluster'
-                )
-                st.table(cluster_dist)
+            
+            #st.subheader("Position Distribution Across Clusters")
+            # Create subplots (5 rows x 4 columns for 20 clusters)
+            fig = make_subplots(
+                rows=5, cols=4,
+                subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
+                specs=[[{"secondary_y": False}] * 4 for _ in range(5)],
+                vertical_spacing=0.08,
+                horizontal_spacing=0.08
+            )
 
+            # Color map for positions
+            unique_positions = sorted(df_clusters['pos'].unique())
+            colors = px.colors.qualitative.Set3
+            pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
 
-            with col2:
-                st.subheader("Position Distribution Across Clusters")
-                # Create subplots (4 rows x 5 columns for 20 clusters)
-                fig = make_subplots(
-                    rows=4, cols=5,
-                    subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
-                    specs=[[{"secondary_y": False}] * 5 for _ in range(4)],
-                    vertical_spacing=0.12,
-                    horizontal_spacing=0.08
-                )
+            # Create a bar chart for each cluster
+            for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
+                row = (cluster_idx // 4) + 1
+                col = (cluster_idx % 4) + 1
 
-                # Color map for positions
-                unique_positions = sorted(df_clusters['pos'].unique())
-                colors = px.colors.qualitative.Set3
-                pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
+                cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+                pos_dist = cluster_data['pos'].value_counts()
 
-                # Create a bar chart for each cluster
-                for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
-                    row = (cluster_idx // 5) + 1
-                    col = (cluster_idx % 5) + 1
+                for pos in pos_dist.index:
+                    fig.add_trace(
+                        go.Bar(
+                            x=[pos],
+                            y=[pos_dist[pos]],
+                            name=pos,
+                            marker_color=pos_colors[pos],
+                            showlegend=(cluster_idx == 0),
+                            hovertemplate=f"{pos}: %{{y}}<extra></extra>"
+                        ),
+                        row=row, col=col
+                    )
 
-                    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-                    pos_dist = cluster_data['pos'].value_counts()
+            fig.update_layout(
+                height=1000,
+                showlegend=False,
+                barmode='stack',
+                margin=dict(l=0, r=0, t=50, b=0)
+            )
 
-                    for pos in pos_dist.index:
-                        fig.add_trace(
-                            go.Bar(
-                                x=[pos],
-                                y=[pos_dist[pos]],
-                                name=pos,
-                                marker_color=pos_colors[pos],
-                                showlegend=(cluster_idx == 0),
-                                hovertemplate=f"{pos}: %{{y}}<extra></extra>"
-                            ),
-                            row=row, col=col
-                        )
+            fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
 
-                fig.update_layout(
-                    height=710,
-                    showlegend=False,
-                    barmode='stack',
-                    margin=dict(l=0, r=0, t=50, b=0)
-                )
-
-                fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
-
-                st.plotly_chart(fig, width='stretch')
-                st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
+            st.plotly_chart(fig, width='stretch')
+            st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
         
         with st.expander("🔗 Tactical Similarity Matrix (Positions)", expanded=False):
             st.markdown("""
