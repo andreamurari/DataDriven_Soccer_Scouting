@@ -103,7 +103,6 @@ def main():
             To prevent overfitting, the network depth dynamically adjusts based on the amount of available data per position:
             - **High Volume (>250 players)**: Deep network (32 ➔ 16 ➔ **8 (Bottleneck)** ➔ 16 ➔ 32) with 20% Dropout.
             - **Medium Volume (100-250 players)**: Moderate network (24 ➔ **6 (Bottleneck)** ➔ 24) with 20% Dropout.
-            - **Low Volume (<100 players)**: Shallow network (12 ➔ **4 (Bottleneck)** ➔ 12) to avoid memorizing small datasets.
             
             ### Training Specifications:
             - **Loss Function**: `Huber Loss`. Huber loss is robust to outliers, meaning the autoencoder learns the *true* average player profile without being skewed by the very anomalies we are trying to detect.
