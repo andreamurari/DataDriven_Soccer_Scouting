@@ -68,12 +68,12 @@ def main():
         st.header("👽 The Anomaly Hunter")
         
         st.markdown("""
-        **Discovering Tactical Aliens**
-        Modern football is overwhelmed by data. Our objective is to cut through the noise by analyzing over 90 physical and technical metrics to define the pure, mathematical **"tactical DNA"** of every role on the pitch. 
-
-        By standardizing these profiles, we can look past rigid positional labels (like "CB" or "CM") to perform truly objective scouting. The result? We identify **tactical anomalies**—hybrid, unique players who defy traditional categorization and offer coaches revolutionary strategic solutions.
-
-        **The Technical Goal:** Utilize Unsupervised Machine Learning (K-Means Clustering) to map the multidimensional landscape of European soccer and mathematically isolate players whose statistical footprint is objectively unique.
+        **Discovering Tactical Aliens**\n
+        Modern football scouting relies heavily on rigid positional labels. Our objective is to challenge these traditional definitions by using unsupervised machine learning to uncover players who break the mold and operate in a completely non-traditional way compared to their peers.
+        \n
+        By applying $K$-means clustering strictly to performance data, we group players based on how they play, rather than where they are deployed. We then analyze the position distribution within each cluster to isolate anomalies: players who end up in clusters dominated by an entirely different role (e.g., a striker grouped with central defenders).
+        
+        **The Technical Goal**: Identify statistical outliers by detecting minority positions within highly homogeneous clusters, mapping out players with unique, unconventional tactical behaviors.
         """)
         
         st.header("K-Means Clustering Overview")
@@ -85,15 +85,9 @@ def main():
             
             ### How It Works:
             1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids).
-            2. **Assignment**: Each player is assigned to the nearest cluster. *(Thanks to our normalization process, this distance effectively acts as Cosine Similarity, grouping players by the "angle" of their playstyle rather than sheer volume).*
+            2. **Assignment**: Each player is assigned to the nearest cluster. 
             3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
             4. **Iteration**: Repeat until convergence.
-            
-            ### Why K-Means for Soccer Scouting?
-            - **Tactical Profiling**: Players in the same cluster share similar playing styles, regardless of how much possession their team averages.
-            - **Anomaly Detection**: Identify players who don't fit their assigned position (e.g., a CB playing like a deep-lying playmaker).
-            - **Scouting Shortcuts**: Find similar players to targets across different leagues/teams.
-            - **Talent Benchmarking**: Compare player profiles to established tactical templates.
             """)
         
         with st.expander("🛠️ How We Built This Model", expanded=False):
@@ -101,103 +95,73 @@ def main():
             ### Data Preparation:
             - **Removed Noisy Features**: Excluded playing time (`90s`, `Starts`) and penalty metrics (`PK`) to prevent the model from grouping players by "status" (starter vs. bench) instead of tactics.
             - **Standardization**: Scaled all features to mean=0, std=1 using `StandardScaler`.
-            - **L2 Normalization (The Secret Sauce)**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
-            - **Removed Goalkeepers**: Excluded GK (different statistical universe).
-            - **Removed Missing Values**: Only players with complete feature profiles were included.
+            - **L2 Normalization**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
             
             ### Model Parameters:
             - **Number of Clusters (k)**: 20 clusters (Optimized to isolate specific tactical micro-roles).
             - **Initialization**: 50 random seeds (`n_init=50`) to guarantee absolute mathematical stability.
-            - **Random State**: 42 for reproducibility.
             - **Metric**: Euclidean distance on L2-Normalized data (mathematically equivalent to **Cosine Similarity**).
             
             ### Cluster Profiles:
             Each cluster is characterized by its:
-            - **Top 3 Positive Features (📈)**: The extreme Z-scores showing what the cluster excels at compared to the European average.
-            - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster actively avoids doing.
+            - **Top 3 Positive Features (📈)**: The highest Z-scores showing what the cluster does **more** compared to the European average.
+            - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster does **less** compared to the European average.
             - **Dominant Role**: Most common nominal position in the cluster.
             - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
             """)
         
         with st.expander("📊 Cluster Distribution & Position Analysis", expanded=False):
-            col1, col2 = st.columns([0.3, 0.7])
+            
+            st.subheader("Cluster Overview")
 
-            with col1:
-                st.subheader("Cluster Overview")
-                st.markdown("<div style='margin-top: 30px;'></div>", unsafe_allow_html=True)
-                cluster_dist = df_clusters.groupby('cluster').size().reset_index(name='Player Count')
-                cluster_dist = cluster_dist.merge(
-                    df_cluster_profile[['cluster', 'dominant_role']],
-                    on='cluster'
-                )
-                st.table(cluster_dist)
+            
+            #st.subheader("Position Distribution Across Clusters")
+            # Create subplots (5 rows x 4 columns for 20 clusters)
+            fig = make_subplots(
+                rows=5, cols=4,
+                subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
+                specs=[[{"secondary_y": False}] * 4 for _ in range(5)],
+                vertical_spacing=0.08,
+                horizontal_spacing=0.08
+            )
 
+            # Color map for positions
+            unique_positions = sorted(df_clusters['pos'].unique())
+            colors = px.colors.qualitative.Set3
+            pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
 
-            with col2:
-                st.subheader("Position Distribution Across Clusters")
-                # Create subplots (4 rows x 5 columns for 20 clusters)
-                fig = make_subplots(
-                    rows=4, cols=5,
-                    subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
-                    specs=[[{"secondary_y": False}] * 5 for _ in range(4)],
-                    vertical_spacing=0.12,
-                    horizontal_spacing=0.08
-                )
+            # Create a bar chart for each cluster
+            for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
+                row = (cluster_idx // 4) + 1
+                col = (cluster_idx % 4) + 1
 
-                # Color map for positions
-                unique_positions = sorted(df_clusters['pos'].unique())
-                colors = px.colors.qualitative.Set3
-                pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
+                cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+                pos_dist = cluster_data['pos'].value_counts()
 
-                # Create a bar chart for each cluster
-                for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
-                    row = (cluster_idx // 5) + 1
-                    col = (cluster_idx % 5) + 1
+                for pos in pos_dist.index:
+                    fig.add_trace(
+                        go.Bar(
+                            x=[pos],
+                            y=[pos_dist[pos]],
+                            name=pos,
+                            marker_color=pos_colors[pos],
+                            showlegend=(cluster_idx == 0),
+                            hovertemplate=f"{pos}: %{{y}}<extra></extra>"
+                        ),
+                        row=row, col=col
+                    )
 
-                    cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
-                    pos_dist = cluster_data['pos'].value_counts()
+            fig.update_layout(
+                height=1000,
+                showlegend=False,
+                barmode='stack',
+                margin=dict(l=0, r=0, t=50, b=0)
+            )
 
-                    for pos in pos_dist.index:
-                        fig.add_trace(
-                            go.Bar(
-                                x=[pos],
-                                y=[pos_dist[pos]],
-                                name=pos,
-                                marker_color=pos_colors[pos],
-                                showlegend=(cluster_idx == 0),
-                                hovertemplate=f"{pos}: %{{y}}<extra></extra>"
-                            ),
-                            row=row, col=col
-                        )
+            fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
 
-                fig.update_layout(
-                    height=710,
-                    showlegend=False,
-                    barmode='stack',
-                    margin=dict(l=0, r=0, t=50, b=0)
-                )
-
-                fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
-
-                st.plotly_chart(fig, width='stretch')
-                st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
-        
-        with st.expander("🔍 Cluster Profiles & Scouting Reports", expanded=False):
-        
-            clusters = sorted(df_cluster_profile['cluster'].unique())
-            cols_per_row = 4
-
-            for i in range(0, len(clusters), cols_per_row):
-                cols = st.columns(cols_per_row)
-                cluster_batch = clusters[i:i+cols_per_row]
-
-                for col, cluster_id in zip(cols, cluster_batch):
-                    with col:
-                        with st.container(border=True):
-                            st.markdown(f"**📋 Cluster {cluster_id}**")
-                            st.markdown(f"*{df_cluster_profile.loc[cluster_id, 'dominant_role']}*")
-                            st.divider()
-                            st.write(df_cluster_profile.loc[cluster_id, 'scouting_report'])
+            st.plotly_chart(fig, width='stretch')
+            st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
         
         with st.expander("🔗 Tactical Similarity Matrix (Positions)", expanded=False):
             st.markdown("""

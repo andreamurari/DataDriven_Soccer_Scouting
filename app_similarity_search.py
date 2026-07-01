@@ -191,19 +191,18 @@ with tab_overview:
         # 3. AUTOENCODER (L'EVOLUZIONE)
         with st.expander("🧠 Advanced Model: Deep Autoencoder"):
             st.markdown("""
-        *The evolution: a neural compression machine designed to isolate pure tactical DNA and fix the PCA's positional blind spots.*
-
+        *The evolution: a neural compression machine designed to isolate pure tactical DNA and fix the PCA's positional blind spots.*""")
+            st.markdown("""            
         **How It Works (The Architecture):**
-        Built as a symmetric feedforward neural network, the process involves:
-        1. **Compression Phase:** The 109 statistical dimensions are compressed down through hidden layers.
-        2. **Latent Space (Bottleneck):** A **16-node linear layer** extracts a highly compressed, dense tactical signature.
-        3. **Learning:** By rebuilding the original stats from the bottleneck, the model learns to preserve only important non-linear tactical patterns and discard noise.
-
-        **The Winning Configuration:**
-        After testing 4 different architectures (including ReLU and Dropout variations), we selected a **Pure Tanh without Dropout**. 
-        - **Why Tanh?** It captures complex relationships while maintaining negative values, ensuring strict positional boundaries.
-        - **Why no Dropout?** Removing dropout forces the 16-node bottleneck to learn an exact, unblurred signature, preventing "hallucinations" between similar roles.
-        - **Huber Loss:** Prevents extreme outliers (common in soccer stats) from distorting the network.
+        - Built as a symmetric feedforward neural network, the process involves:
+            1. **Compression Phase:** The 109 statistical dimensions are compressed down through hidden layers.
+            2. **Latent Space (Bottleneck):** A **16-node linear layer** extracts a highly compressed, dense tactical signature.
+            3. **Learning:** By rebuilding the original stats from the bottleneck, the model learns to preserve only important non-linear tactical patterns and discard noise.
+            """)
+            st.markdown("""        
+        - **The Winning Configuration:** After conducting empirical tests on 4 different architectures (including ReLU and Dropout variations), we selected a **Pure Tanh without Dropout**. 
+        
+        - **Loss function**: Huber Loss to prevents extreme outliers (common in football stats) from distorting the network.
             """)
             
         # 4. COSINE SIMILARITY
