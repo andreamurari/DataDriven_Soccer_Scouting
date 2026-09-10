@@ -1,0 +1,15 @@
+# Core dependencies — needed to run the three Streamlit scouting apps
+streamlit>=1.63
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.4
+plotly>=5.22
+matplotlib>=3.8
+scipy>=1.12
+openpyxl>=3.1          # reads resources/glossary.xlsx
+
+# Notebook-only dependencies — needed to retrain the models / rebuild the dataset
+tensorflow>=2.15       # Keras autoencoders in DataDriven_Soccer_Scouting.ipynb
+soccerdata>=1.6        # FBref scraping in dataset_geneator.ipynb
+kagglehub>=0.3         # EA FC 24 database download in dataset_geneator.ipynb
+nbformat>=5.9          # required by plotly for notebook rendering
