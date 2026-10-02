@@ -174,7 +174,19 @@ pip install -r requirements-notebooks.txt    # also re-run the notebooks (Tensor
 streamlit run streamlit_app.py
 ```
 
-A single multipage app with a sidebar grouping the three tools — **Hidden Gem Engine** (similarity search), **Anomaly Hunter: K-Means** and **Anomaly Hunter: Autoencoder** — each with an **Overview** page (methodology, insights) and an interactive **explorer** page with filters for position, league, age and season.
+This opens a single multipage app. The sidebar groups the three tools, and each tool has an **Overview** page (methodology and insights) plus an interactive page:
+
+| Section | Page | What you can do |
+|---|---|---|
+| — | **Home** | Project intro and how to navigate the app |
+| **Hidden Gem Engine** | Overview | How PCA, the autoencoder and the Z-score ensemble are built |
+| | Search Engine | Choose a player and season, then get the Top-N most similar players. Filters: max age, season, preferred foot, same position or league only. A slider sets the Tanh-AE / PCA weighting (default 70/30) |
+| **Anomaly Hunter - K-Means** | Overview | How K-Means works and how the model was built, position distribution per cluster, position similarity matrix with key insights |
+| | Cluster Analysis | Choose one of the 20 clusters to see its profile and members, filtered by position and league |
+| **Anomaly Hunter - Autoencoder** | Overview | Per-position autoencoders, MAD anomaly score, key findings |
+| | Deep Anomaly Hub | Browse true anomalies (score > 2.5) by macro-position, league and birth year, with the features that explain each one |
+
+The pages all read precomputed CSVs from `resources/` and `saved_models/` through cached loaders in `data_loader.py`. The app does not need TensorFlow and works from any working directory.
 
 ### Deploy on Streamlit Community Cloud
 
