@@ -1,0 +1,173 @@
+import streamlit as st
+import pandas as pd
+import plotly.express as px
+import plotly.graph_objects as go
+from plotly.subplots import make_subplots
+
+from data_loader import load_cluster_data
+
+st.title("⚽ Football Scouting - Anomaly Detection")
+
+df_clusters, df_cluster_profile, glossary_dict = load_cluster_data()
+
+
+st.header("👽 The Anomaly Hunter")
+
+st.markdown("""
+**Discovering Tactical Aliens**\n
+Modern football scouting relies heavily on rigid positional labels. Our objective is to challenge these traditional definitions by using unsupervised machine learning to uncover players who break the mold and operate in a completely non-traditional way compared to their peers.
+\n
+By applying $K$-means clustering strictly to performance data, we group players based on how they play, rather than where they are deployed. We then analyze the position distribution within each cluster to isolate anomalies: players who end up in clusters dominated by an entirely different role (e.g., a striker grouped with central defenders).
+
+**The Technical Goal**: Identify statistical outliers by detecting minority positions within highly homogeneous clusters, mapping out players with unique, unconventional tactical behaviors.
+""")
+
+st.header("K-Means Clustering Overview")
+
+with st.expander("🧩 What is K-Means Clustering?", expanded=False):
+    st.markdown("""
+    **K-Means Clustering** is an unsupervised machine learning algorithm that groups players 
+    into clusters based on their statistical profiles (e.g., passing, shooting, dribbling, defense, etc.).
+
+    ### How It Works:
+    1. **Initialization**: The algorithm starts with k randomly selected cluster centers (centroids).
+    2. **Assignment**: Each player is assigned to the nearest cluster. 
+    3. **Update**: Cluster centers are recalculated based on the mean of assigned players.
+    4. **Iteration**: Repeat until convergence.
+    """)
+
+with st.expander("🛠️ How We Built This Model", expanded=False):
+    st.markdown("""
+    ### Data Preparation:
+    - **Removed Noisy Features**: Excluded playing time (`90s`, `Starts`) and penalty metrics (`PK`) to prevent the model from grouping players by "status" (starter vs. bench) instead of tactics.
+    - **Standardization**: Scaled all features to mean=0, std=1 using `StandardScaler`.
+    - **L2 Normalization**: Projected all player vectors to a length of 1 using `normalize(norm='l2')`. This eliminates the "Possession Bias", ensuring a player with 100 passes and 10 tackles is grouped with a player with 50 passes and 5 tackles (same 10:1 tactical ratio).
+
+    ### Model Parameters:
+    - **Number of Clusters (k)**: 20 clusters (Optimized to isolate specific tactical micro-roles).
+    - **Initialization**: 50 random seeds (`n_init=50`) to guarantee absolute mathematical stability.
+    - **Metric**: Euclidean distance on L2-Normalized data (mathematically equivalent to **Cosine Similarity**).
+
+    ### Cluster Profiles:
+    Each cluster is characterized by its:
+    - **Top 3 Positive Features (📈)**: The highest Z-scores showing what the cluster does **more** compared to the European average.
+    - **Top 3 Negative Features (📉)**: The lowest Z-scores showing what the cluster does **less** compared to the European average.
+    - **Dominant Role**: Most common nominal position in the cluster.
+    - **Scouting Report**: A bespoke, human-readable interpretation of the cluster's pure tactical playing style.
+    """)
+
+with st.expander("📊 Cluster Distribution & Position Analysis", expanded=False):
+
+    st.subheader("Cluster Overview")
+
+
+    #st.subheader("Position Distribution Across Clusters")
+    # Create subplots (5 rows x 4 columns for 20 clusters)
+    fig = make_subplots(
+        rows=5, cols=4,
+        subplot_titles=[f"Cluster {i}" for i in sorted(df_clusters['cluster'].unique())],
+        specs=[[{"secondary_y": False}] * 4 for _ in range(5)],
+        vertical_spacing=0.08,
+        horizontal_spacing=0.08
+    )
+
+    # Color map for positions
+    unique_positions = sorted(df_clusters['pos'].unique())
+    colors = px.colors.qualitative.Set3
+    pos_colors = {pos: colors[i % len(colors)] for i, pos in enumerate(unique_positions)}
+
+    # Create a bar chart for each cluster
+    for cluster_idx, cluster_id in enumerate(sorted(df_clusters['cluster'].unique())):
+        row = (cluster_idx // 4) + 1
+        col = (cluster_idx % 4) + 1
+
+        cluster_data = df_clusters[df_clusters['cluster'] == cluster_id]
+        pos_dist = cluster_data['pos'].value_counts()
+
+        for pos in pos_dist.index:
+            fig.add_trace(
+                go.Bar(
+                    x=[pos],
+                    y=[pos_dist[pos]],
+                    name=pos,
+                    marker_color=pos_colors[pos],
+                    showlegend=(cluster_idx == 0),
+                    hovertemplate=f"{pos}: %{{y}}<extra></extra>"
+                ),
+                row=row, col=col
+            )
+
+    fig.update_layout(
+        height=1000,
+        showlegend=False,
+        barmode='stack',
+        margin=dict(l=0, r=0, t=50, b=0)
+    )
+
+    fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='white')
+
+    st.plotly_chart(fig, width='stretch')
+    st.markdown("<div style='margin-bottom: 30px;'></div>", unsafe_allow_html=True)        
+
+with st.expander("🔗 Tactical Similarity Matrix (Positions)", expanded=False):
+    st.markdown("""
+    This heatmap shows how **tactically similar** different positions are based on their **cluster distribution patterns**.
+
+    - **Red**: Positions with negative correlation (players in one position rarely share cluster patterns with players in another)
+    - **Blue**: Positions with strong positive correlation (players in these positions often cluster together, suggesting similar playing styles)
+    - **Diagonal = 1.0**: Perfect correlation (a position with itself)
+    """)
+
+    # Calculate position correlation based on cluster distribution
+    pivot_pos = pd.crosstab(df_clusters['cluster'], df_clusters['pos'])
+    pivot_norm = pivot_pos.div(pivot_pos.sum(axis=1), axis=0)
+    pos_corr = pivot_norm.corr()
+
+    # Sort the correlation matrix by the specified position order
+    position_order = ['CB', 'RB', 'LB', 'CDM', 'CM', 'RM', 'LM', 'CAM', 'RW', 'LW', 'ST']
+    # Filter to keep only positions that exist in the data
+    position_order = [pos for pos in position_order if pos in pos_corr.columns]
+    pos_corr = pos_corr.loc[position_order, position_order]
+
+    fig = px.imshow(
+        pos_corr,
+        labels=dict(x="Position", y="Position", color="Correlation"),
+        x=pos_corr.columns,
+        y=pos_corr.columns,
+        color_continuous_scale='RdBu_r',
+        zmin=-0.5,
+        zmax=1,
+        text_auto='.2f',
+        aspect='auto',
+    )
+
+    fig.update_layout(
+        width=900,
+        height=800,
+        xaxis_tickangle=-45
+    )
+
+    st.plotly_chart(fig, width='stretch')
+
+    st.markdown("""
+    **Key Insights**:
+    - ***The "Wingback" Symmetry*** (RB ↔ LB):
+        - The strongest correlation in the entire dataset (excluding self-correlation) is between RB and LB (0.97).
+        - Insight: This suggests that in modern football, the requirements for fullbacks are almost identical regardless of the flank. They are likely being clustered based on their involvement in progression and defensive volume rather than side-specific traits.
+
+    - ***The Creative/Wide Block*** (RM, LM, RW, LW, CAM):
+        - There is a massive "warm" zone in the bottom-right quadrant.
+        - Insight: There is a high degree of interchangeability between wide midfielders (RM/LM) and wingers (RW/LW), with correlations ranging from 0.75 to 0.92.
+        - Observation: Interestingly, LM/LW (0.86) and RM/RW (0.76) are very strong, but LM and RW (0.88) are even stronger. This suggests your clustering is picking up on the "Inverted Winger" or "Wide Playmaker" profile that dominates the current era, where the specific side matters less than the functional role.
+
+    - ***The Central Engine Room*** (CDM ↔ CM)
+        - There is a solid correlation (0.71) between Defensive Midfielders and Central Midfielders.
+        - Insight: While distinct, these roles often bleed into each other. However, notice the sharp drop-off when moving from CM to CAM (-0.04).
+
+    - ***The "Lone Wolf" Striker*** (ST)
+        - The ST (Striker) position shows almost zero or negative correlation with every other position on the pitch.
+        - Analysis: Your clustering suggests that the statistical output of a Striker (likely high shots, low touches in the buildup, high xG) is so unique that they almost never share a cluster with even the most attacking wingers or CAMs. In a modern "False 9" era, you might expect more overlap, but your data suggests a very traditional separation of the #9 role.
+
+    - ***The Defensive Island*** (CB)
+        - The Center Back (CB) is the most isolated role defensively.
+        - Analysis: It has negative correlations with almost every other position, especially the midfield engine (CM at -0.44). This confirms that the statistical "DNA" of a CB—heavy on aerials, clearances, and low-risk passing—is fundamentally different from the "active" defending seen in CDMs.""")

@@ -166,14 +166,14 @@ def analyze_cluster(cluster_id, df_clusters, df_cluster_profile, glossary_dict, 
     with pos_cols[0]:
         # Plot
         fig = plot_cluster_positions(cluster_id, df_clusters)
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig, width='stretch')
     
     with pos_cols[1]:
         # Table
         pos_counts = cluster_data['pos'].value_counts().reset_index()
         pos_counts.columns = ['Position', 'Count']
         pos_counts['Percentage'] = (pos_counts['Count'] / len(cluster_data) * 100).round(1)
-        st.dataframe(pos_counts, use_container_width=True, hide_index=True)
+        st.dataframe(pos_counts, width='stretch', hide_index=True)
 
 
 
@@ -236,7 +236,7 @@ def plot_anomalies_per_macropos(df_anomalies, df_merged, sort_by='Percentage'):
     fig.update_layout(title_x=0, xaxis_tickangle=-45)
     
     # MODIFICA STREAMLIT:
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def plot_anomalies_per_league(df_anomalies, df_merged, macro_pos=None):
@@ -295,7 +295,7 @@ def plot_anomalies_per_league(df_anomalies, df_merged, macro_pos=None):
     fig.update_traces(textposition='auto', marker_line_width=0.2, marker_line_color='black')
     fig.update_layout(title_x=0, xaxis_tickangle=-45)
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 
 def plot_anomalies_per_age(df_anomalies, df_merged, macro_pos=None):
@@ -350,7 +350,7 @@ def plot_anomalies_per_age(df_anomalies, df_merged, macro_pos=None):
         xaxis=dict(type='category') 
     )
     
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width='stretch')
 
 import streamlit as st
 
@@ -413,7 +413,7 @@ def display_anomaly_scouting_report(df_anomalies, df_glossary, macro_pos=None):
     
     st.dataframe(
         df_display,
-        use_container_width=True,
+        width='stretch',
         hide_index=True,
         column_config={
             "Score": st.column_config.NumberColumn("Anomaly Score", format="%.1f"),

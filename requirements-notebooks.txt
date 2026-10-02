@@ -1,0 +1,6 @@
+# Extra dependencies needed only to retrain the models / rebuild the dataset
+-r requirements.txt
+tensorflow>=2.15       # Keras autoencoders in DataDriven_Soccer_Scouting.ipynb
+soccerdata>=1.6        # FBref scraping in dataset_geneator.ipynb
+kagglehub>=0.3         # EA FC 24 database download in dataset_geneator.ipynb
+nbformat>=5.9          # required by plotly for notebook rendering

@@ -90,12 +90,12 @@ Four autoencoder variants were tested (ReLU / Tanh, with and without dropout); *
 
 ### Task 2 — Anomaly detection
 
-**A. K-Means clustering** ([`app_anomaly_det.py`](app_anomaly_det.py))
+**A. K-Means clustering** ([`app_pages/clustering_analysis.py`](app_pages/clustering_analysis.py))
 - `k = 20` clusters, `n_init = 50`, Euclidean distance on L2-normalized data (equivalent to cosine similarity).
 - Each cluster is profiled with its top ±3 Z-score features, dominant role, and a human-readable scouting report.
 - Anomalies = players sitting in a cluster dominated by a different position.
 
-**B. Per-position Autoencoder reconstruction error** ([`app_anomaly_det_ae.py`](app_anomaly_det_ae.py))
+**B. Per-position Autoencoder reconstruction error** ([`app_pages/deep_anomaly_hub.py`](app_pages/deep_anomaly_hub.py))
 - A **separate autoencoder per macro-position**, so a winger is never flagged just for not defending like a centre-back.
 - `QuantileTransformer(output_distribution='normal')` fitted locally per position.
 - Architecture scales with sample size (deeper network + 20% dropout for positions with >250 players).
@@ -123,14 +123,23 @@ DataDriven_Soccer_Scouting/
 ├── dataset_geneator.ipynb             # Builds merged_data.csv from FBref + EA FC 24
 ├── cluster_functions.py               # Shared plotting / analysis helpers for the Streamlit apps
 │
-├── app_similarity_search.py           # Task 1 app — Hidden Gem Engine (PCA + AE ensemble)
-├── app_anomaly_det.py                 # Task 2 app — K-Means clustering anomaly explorer
-├── app_anomaly_det_ae.py              # Task 2 app — Deep per-position reconstruction-error explorer
+├── streamlit_app.py                   # Multipage app entrypoint (navigation)
+├── data_loader.py                     # Cached CSV/Excel loaders shared by all pages
+├── app_pages/
+│   ├── home.py                        # Landing page
+│   ├── similarity_overview.py         # Task 1 — Hidden Gem Engine: methodology
+│   ├── similarity_search.py           # Task 1 — Hidden Gem Engine: search (PCA + AE ensemble)
+│   ├── clustering_overview.py         # Task 2 — K-Means anomaly hunter: methodology & insights
+│   ├── clustering_analysis.py         # Task 2 — K-Means interactive cluster explorer
+│   ├── deep_overview.py               # Task 2 — Autoencoder anomaly hunter: methodology & insights
+│   └── deep_anomaly_hub.py            # Task 2 — Autoencoder interactive anomaly explorer
 │
 ├── merged_data.csv                    # Final joined dataset
 ├── resources/                         # Precomputed cluster profiles, anomaly tables, glossary
 ├── saved_models/                      # Trained Keras encoders + exported latent-space CSVs
-└── ProjectOutline/                    # Original project brief
+├── ProjectOutline/                    # Original project brief
+├── requirements.txt                   # App runtime dependencies
+└── requirements-notebooks.txt         # Extra dependencies to re-run the notebooks
 ```
 
 ---
@@ -149,24 +158,30 @@ python -m venv .venv
 # macOS / Linux
 source .venv/bin/activate
 
-pip install -r requirements.txt
+pip install -r requirements.txt              # run the app
+pip install -r requirements-notebooks.txt    # also re-run the notebooks (TensorFlow, soccerdata, kagglehub)
 ```
 
-> `tensorflow`, `soccerdata` and `kagglehub` are only needed to re-run the notebooks — see the comments in [`requirements.txt`](requirements.txt). The three Streamlit apps run on the committed CSVs and only need the core dependencies.
+> The Streamlit app runs on the committed CSVs and only needs `requirements.txt`.
 
 ---
 
 ## Usage
 
-### Run the scouting apps
+### Run the scouting app
 
 ```bash
-streamlit run app_similarity_search.py   # find players with a similar tactical DNA
-streamlit run app_anomaly_det.py         # K-Means clustering anomaly explorer
-streamlit run app_anomaly_det_ae.py      # deep per-position anomaly explorer
+streamlit run streamlit_app.py
 ```
 
-Each app opens in the browser with an **Overview** section (methodology, walkthrough) and an interactive **explorer** with filters for position, league, age and season.
+A single multipage app with a sidebar grouping the three tools — **Hidden Gem Engine** (similarity search), **Anomaly Hunter: K-Means** and **Anomaly Hunter: Autoencoder** — each with an **Overview** page (methodology, insights) and an interactive **explorer** page with filters for position, league, age and season.
+
+### Deploy on Streamlit Community Cloud
+
+1. Push the repository to GitHub.
+2. On [share.streamlit.io](https://share.streamlit.io) click **Create app → Deploy a public app from GitHub**.
+3. Pick this repository and branch, set **Main file path** to `streamlit_app.py`, and select Python 3.11+ under *Advanced settings*.
+4. Deploy. Every push to the selected branch redeploys the app automatically.
 
 ### Reproduce the analysis
 
