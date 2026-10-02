@@ -2,6 +2,8 @@
 
 **Deep Player Embeddings: Dimensionality Reduction & Anomaly Detection in European Soccer**
 
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://data-driven-soccer-scouting.streamlit.app/)
+
 Unsupervised machine learning for tactical scouting. This project compresses **~115 technical, tactical and physical metrics** for **~4,000 players** from the Top-5 European leagues into a compact *"Tactical DNA"*, then uses it to answer two scouting questions:
 
 1. **Who plays like this player?** — find affordable "hidden gems" whose style mirrors an elite target.
@@ -169,6 +171,8 @@ pip install -r requirements-notebooks.txt    # also re-run the notebooks (Tensor
 ## Usage
 
 ### Run the scouting app
+
+The app is live at **[data-driven-soccer-scouting.streamlit.app](https://data-driven-soccer-scouting.streamlit.app/)**, so there is nothing to install. To run it locally:
 
 ```bash
 streamlit run streamlit_app.py
